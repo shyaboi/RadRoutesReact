@@ -1,4 +1,4 @@
-# Rad Routes Runner
+# Rad Routes
 
 ![Rad Routes Logo](https://i.ibb.co/y0gF3LF/logo512.png)
 

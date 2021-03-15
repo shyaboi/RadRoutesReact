@@ -1,9 +1,8 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useEffect } from "react";
 import {
 Container,
 Row,
 Col,
-NavLink,
 } from "reactstrap";
 import logo from '../../assets/images/radroutes.png'
 
@@ -19,7 +18,7 @@ const Logo = (props) => {
     <Container  id='logoCon' className="mt-5" fluid>
       <Row className="mt-5">
         <Col className="mt-5"  id='logo'>
-        <img src={logo}/>
+        <img src={logo} alt="rad routes logo"/>
         </Col>
       </Row>
     </Container>
