@@ -59,18 +59,16 @@ $theme-colors: (
   transition: visibility 0s linear 500ms, opacity 500ms;
 }
 .ninja{
-  padding: 1.5rem;
-  margin: 1.5rem;
   visibility: visible;
   opacity: 1;
-  position: relative;
   transition: visibility 0s linear 0s, opacity 500ms;
   box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
 }
 
-.dropButt{
+.txt-cen{
 
+  text-align: center;
 
 
 }

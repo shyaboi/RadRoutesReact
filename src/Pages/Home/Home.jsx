@@ -1,49 +1,91 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Row,
   Col,
   Button,
-  NavLink,
   Form,
   FormGroup,
   Label,
   Input,
   FormText,
+  NavLink,
 } from "reactstrap";
-
+import logo from "../../assets/images/rr.png";
 const Home = (props) => {
+  const [type, setType] = useState("...Waiting for file to be loaded");
+  const [route, setRoute] = useState("my-rad-route");
+
+  const extChange = (e) => {
+    let fileInput = e.target.files[0].name;
+    console.log(fileInput);
+    let popFile = fileInput.split(".").pop();
+    setType(popFile);
+  };
+  const routeChange = (e) => {
+    let r = e.target.value;
+    setRoute(r);
+  };
+
   useEffect(() => {}, []);
 
   return (
-    <Container className="mt-5" fluid>
-      <Row className="mt-5">
-        <Col>
-          This is the home page
-          <NavLink href="/">logo</NavLink>
-          <Form method="POST" action="http://localhost:5000/file" enctype="multipart/form-data">
+    <Container className="pb-5 txt-cen ninja">
+      <Form
+        method="POST"
+        action="http://localhost:5000/file"
+        encType="multipart/form-data"
+      >
+        <Row className="txt-cen">
+          <Col>
+            <NavLink href="/">
+              <img src={logo} alt="rad routes logo" />
+            </NavLink>
+          </Col>
+        </Row>
+        <Row className="txt-cen" xl="2" xs='1'>
+            <Col className="ninja p-5">
+          <FormGroup>
+              <Label>
+                Your Rad Route will be hosted at https://radroutes.com/{route}
+              </Label>
+              <Input
+                type="text"
+                name="route"
+                placeholder="my-rad-route"
+                onChange={(e) => {
+                  routeChange(e);
+                }}
+              />
+              </FormGroup>
+            </Col>
+            
+            <Col className="ninja p-5">
             <FormGroup>
-              <Label for="exampleFile">File</Label>
-              <Input type="file" name="file" id="exampleFile" />
-              <FormText color="muted">
-                This is some placeholder block-level help text for the above
-                input. It's a bit lighter and easily wraps to a new line.
-              </FormText>
+              <Label for="exampleFile">Upload a file for your route:</Label>
+              <Input
+                type="file"
+                onChange={(e) => {
+                  extChange(e);
+                }}
+                name="file"
+                id="exampleFile"
+              />
+              <FormText color="muted">Your File is a {type} File</FormText>
+          </FormGroup>
+            <FormGroup className="ninjaVanish">
+              <Input type="select" name="type" id="exampleSelect">
+                <option name="type" value={type}></option>
+              </Input>
             </FormGroup>
-            <FormGroup>
-        <Label for="exampleSelect">Select</Label>
-        <Input type="select" name="type" id="exampleSelect">
-          <option name='python' value="python">Python</option>
-          <option name='ruby' value="ruby">Ruby</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </Input>
-      </FormGroup>
-            <Button>Submit</Button>
-          </Form>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button size='lg' className='ninja mt-5'>Submit</Button>
+          </Col>
+        </Row>
+      </Form>
     </Container>
   );
 };
