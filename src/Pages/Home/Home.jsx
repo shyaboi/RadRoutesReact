@@ -11,10 +11,15 @@ import {
   FormText,
   NavLink,
 } from "reactstrap";
+import { AvailableAddOnContext } from "twilio/lib/rest/preview/marketplace/availableAddOn";
 import logo from "../../assets/images/rr.png";
+import fetchy from "../../Utils/Fetcher";
+
 const Home = (props) => {
   const [type, setType] = useState("...Waiting for file to be loaded");
   const [route, setRoute] = useState("my-rad-route");
+  const [routeExists, setExitance] = useState('Availible');
+  const [avail, setAvail] = useState('avail');
 
   const extChange = (e) => {
     let fileInput = e.target.files[0].name;
@@ -22,9 +27,26 @@ const Home = (props) => {
     let popFile = fileInput.split(".").pop();
     setType(popFile);
   };
+
+  const ok = (rr) => {
+    fetchy(`http://localhost:5000/exists/${rr}`).then(async (data) => {
+      console.log(data);
+      let d = data;
+      if(d===false){
+        setExitance('Route Availible')
+        setAvail('avail')
+      }
+      if(d===true){
+        setExitance('Route NOT Availible')
+        setAvail('notAvail')
+      }
+    });
+  };
+
   const routeChange = (e) => {
     let r = e.target.value;
     setRoute(r);
+    ok(r);
   };
 
   useEffect(() => {}, []);
@@ -43,9 +65,9 @@ const Home = (props) => {
             </NavLink>
           </Col>
         </Row>
-        <Row className="txt-cen" xl="2" xs='1'>
-            <Col className="ninja p-5">
-          <FormGroup>
+        <Row className="txt-cen" xl="2" xs="1">
+          <Col className="ninja p-5">
+            <FormGroup>
               <Label>
                 Your Rad Route will be hosted at https://radroutes.com/{route}
               </Label>
@@ -57,10 +79,13 @@ const Home = (props) => {
                   routeChange(e);
                 }}
               />
-              </FormGroup>
-            </Col>
-            
-            <Col className="ninja p-5">
+            </FormGroup>
+            <Label className={avail}>
+            Your Route is {routeExists}
+            </Label>
+          </Col>
+
+          <Col className="ninja p-5">
             <FormGroup>
               <Label for="exampleFile">Upload a file for your route:</Label>
               <Input
@@ -72,7 +97,7 @@ const Home = (props) => {
                 id="exampleFile"
               />
               <FormText color="muted">Your File is a {type} File</FormText>
-          </FormGroup>
+            </FormGroup>
             <FormGroup className="ninjaVanish">
               <Input type="select" name="type" id="exampleSelect">
                 <option name="type" value={type}></option>
@@ -82,7 +107,9 @@ const Home = (props) => {
         </Row>
         <Row>
           <Col>
-            <Button size='lg' className='ninja mt-5'>Submit</Button>
+            <Button size="lg" className="ninja mt-5">
+              Submit
+            </Button>
           </Col>
         </Row>
       </Form>
