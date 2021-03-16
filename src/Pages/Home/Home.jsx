@@ -23,8 +23,8 @@ const Home = (props) => {
 
   const extChange = (e) => {
     let fileInput = e.target.files[0].name;
-    console.log(fileInput);
     let popFile = fileInput.split(".").pop();
+    console.log(popFile);
     setType(popFile);
   };
 
