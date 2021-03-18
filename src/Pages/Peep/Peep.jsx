@@ -95,7 +95,7 @@ function Peep() {
                             <strong>Code</strong>
                           </CardTitle>
                           <CardText onClick={tronk}>
-                            <p className={trunx}>{fl.pFile}</p>
+                            <p  className={trunx}>{fl.pFile}</p>
                           </CardText>
                         </Col>
                       </Row>
