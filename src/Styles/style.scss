@@ -74,7 +74,7 @@ $theme-colors: (
 
 }
 
-.muhNav{
+.shad{
   
   box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
@@ -83,6 +83,22 @@ $theme-colors: (
 .radGrad{
   background: rgb(165,59,107);
 background: linear-gradient(180deg, rgba(165,59,107,1) 0%, rgba(96,59,137,1) 35%, rgba(48,179,193,1) 90%, rgba(50,56,128,1) 100%);
+box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
+-webkit-box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
+}
+
+.raddGrad{
+  background: rgb(165,59,107);
+background: linear-gradient(180deg, rgba(165,59,107,1) 0%, rgba(96,59,137,1) 68%);
+box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
+}
+
+.routesGrad{
+  background: rgb(50,56,128);
+  background: linear-gradient(180deg, rgba(50,56,128,1) 0%, rgba(64,142,176,1) 79%);
+  box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
 }
 
 #logoCon{
@@ -123,6 +139,6 @@ background: linear-gradient(180deg, rgba(165,59,107,1) 0%, rgba(96,59,137,1) 35%
   text-overflow: ellipsis;
 }
 .notTrunc {
-  white-space: wrap;
+  white-space: pre-line;
   overflow: visible;
 }
