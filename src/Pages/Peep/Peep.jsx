@@ -57,7 +57,7 @@ function Peep() {
       </Container>
       <Container className="mt-5 pt-5 txt-cen " fluid>
         <Row>
-          <Col className='shad radGrad p-3 rounded-pill'>
+          <Col className="shad radGrad p-3 rounded-pill stok">
             <h1>Peep other users code and routes</h1>
           </Col>
         </Row>
@@ -70,13 +70,13 @@ function Peep() {
                     <CardBody>
                       <Row>
                         <Col>
-                          Route:
+                          <strong>Route:</strong>
                           <strong>
-                              <a href={"https://radroute.run/" + fl.route}>
-                            <CardHeader className="raddGrad p-3 rounded-pill">
+                            <a href={"https://radroute.run/" + fl.route}>
+                              <CardHeader className="raddGrad p-3 rounded-pill">
                                 https://RadRoute.run/{fl.route}
-                            </CardHeader>
-                              </a>
+                              </CardHeader>
+                            </a>
                           </strong>
                           <CardTitle tag="h5"> </CardTitle>
                           <hr />
@@ -95,7 +95,7 @@ function Peep() {
                             <strong>Code</strong>
                           </CardTitle>
                           <CardText onClick={tronk}>
-                            <p  className={trunx}>{fl.pFile}</p>
+                            <p className={trunx}>{fl.pFile}</p>
                           </CardText>
                         </Col>
                       </Row>
