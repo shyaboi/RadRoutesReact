@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { NavLink } from "reactstrap";
-import Logo from "./Components/logo/logo";
+import Login from "./Pages/Login/Login";
 import FileUpload from "./Pages/FileUpload/FileUpload";
 import Home from "./Pages/Home/Home";
 import Editor from "./Pages/Editor/Editor";
 import Peep from "./Pages/Peep/Peep";
+import Register from "./Pages/Register/Register.jsx";
 import "./App.css";
 import {Container} from "reactstrap";
 
@@ -16,9 +17,7 @@ function App() {
   return (
     <Router>
       <Container fluid>
-        <NavLink href='/Home'>
-        <Route path="/" exact component={Logo} />
-          </NavLink>
+        <Route path="/" exact component={Login} />
       </Container>
       <div>
         <Switch>
@@ -26,6 +25,7 @@ function App() {
           <Route path="/Home" exact component={Home} />
           <Route path="/Editor" exact component={Editor} />
           <Route path="/Peep" exact component={Peep} />
+          <Route path="/Register" exact component={Register} />
         </Switch>
       </div>
     </Router>
