@@ -11,16 +11,11 @@ import {
   NavLink,
 } from "reactstrap";
 import logo from "../../assets/images/radroutes.png";
-import { useJwt } from "react-jwt";
 
-const token = "secret";
 
 const Register = (props) => {
-  const { decodedToken, isExpired } = useJwt(token);
 
   useEffect(() => {
-    console.log(decodedToken);
-    console.log(isExpired);
   }, []);
 
   return (

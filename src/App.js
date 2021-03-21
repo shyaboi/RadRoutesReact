@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { NavLink } from "reactstrap";
 import Login from "./Pages/Login/Login";
 import FileUpload from "./Pages/FileUpload/FileUpload";
 import Home from "./Pages/Home/Home";

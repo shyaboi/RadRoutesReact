@@ -8,8 +8,6 @@ import {
   NavItem,
   NavLink,
   NavbarText,
-  FormGroup,
-  Input,
 } from "reactstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import rad from "../../assets/images/rad.png";
