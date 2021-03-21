@@ -1,22 +1,12 @@
 import React, { useState, useEffect, Suspense } from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container, NavLink, Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import {
   Card,
   CardText,
   CardBody,
   CardTitle,
   CardHeader,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from "reactstrap";
 import Navi from "../../Components/Nav/Nav";
 import fetchy from "../../Utils/Fetcher";

@@ -14,7 +14,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  toggle,
 } from "reactstrap";
 //import ace editor_---------------------------------------
 import AceEditor from "react-ace";
@@ -87,7 +86,7 @@ function Editor() {
       let wrap = localStorage.getItem("Wrap");
       let lan = localStorage.getItem("Lang");
       let fun = localStorage.getItem("Funk");
-      if (wrap == "Enabled") {
+      if (wrap === "Enabled") {
         setWrapState(true);
         setWrapStateText("Enabled");
         // else set the states to default settings
@@ -163,7 +162,7 @@ function Editor() {
     //set theme to e.target
     let wrap = e.currentTarget.value;
     ///if wrap is true
-    if (wrap == 1) {
+    if (wrap === 1) {
       //set wrap state to true
       setWrapState(true);
       setWrapStateText("Enabled");

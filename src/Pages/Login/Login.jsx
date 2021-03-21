@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Row,
   Col,
   Button,
-  Form,
   FormGroup,
   Label,
   Input,
   NavLink
 } from "reactstrap";
 import logo from "../../assets/images/radroutes.png";
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
+
 import { useJwt } from "react-jwt";
 
 const token = "secret";
@@ -18,63 +20,93 @@ const token = "secret";
 
 const Logo = (props) => {
   const { decodedToken, isExpired } = useJwt(token);
+  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     console.log(decodedToken)
     console.log(isExpired)
   }, []);
 
+  const postForm = async () => {
+      let bod = JSON.stringify({
+        'email': email,
+        'password': pass,
+      })
+      axios.post('/login', bod)
+      .then(function (response) {
+        let rData = response.data
+        let authed = response.data.authed
+        let enc = response.data.enc
+        if(authed=='1'){
+          console.log(authed,enc)
+          localStorage.setItem('enc', enc)
+
+          history.push("/Home");
+
+        }else{
+          alert(rData)
+        }
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
   return (
     <Container id="logoCon" className="txt-cen" fluid>
       <Container>
 
-      <Row className="mt-4">
-        <Col id="logo">
-          <img src={logo} alt="rad routes logo" height='350px' />
-        </Col>
-      </Row>
+        <Row className="mt-4">
+          <Col id="logo">
+            <img src={logo} alt="rad routes logo" height='350px' />
+          </Col>
+        </Row>
       </Container>
       <Row className="mr-5 ml-5  p-5 txt-cen">
         <Col>
-      <Form
-      method="POST"
-      action="http://localhost:5000/login"
-      encType="multipart/form-data"
-      >
-        <FormGroup className="mr-sm-2 mb-sm-0 sec">
-          <Label for="exampleEmail" className="mr-sm-2">
-         <h4>
-            Email
+          <FormGroup className="mr-sm-2 mb-sm-0 sec">
+            <Label for="exampleEmail" className="mr-sm-2">
+              <h4>
+                Email
          </h4>
-          </Label>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="something@idk.cool"
-          />
-        </FormGroup>
-        <FormGroup className="mt-4 mr-sm-2 mb-sm-0">
-          <Label for="examplePassword" className="mr-sm-2 sec">
-            <h4>
-            Password
+            </Label>
+            <Input
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              name="email"
+              id="Email"
+              placeholder="rad@radroutes.com"
+            />
+          </FormGroup>
+          <FormGroup className="mt-4 mr-sm-2 mb-sm-0">
+            <Label for="examplePassword" className="mr-sm-2 sec">
+              <h4>
+                Password
             </h4>
-          </Label>
-          <Input
-            type="password"
-            name="password"
-            id="examplePassword"
-            placeholder="don't tell!"
-          />
-        </FormGroup>
-        <Button className='mt-4'>Submit</Button>
-      </Form>
+            </Label>
+            <Input
+              onChange={(e) => setPass(e.target.value)}
+              type="password"
+              name="password"
+              id="Password"
+              placeholder="secret , shh don't tell anyone"
+            />
+          </FormGroup>
+          <Button className='mt-4'
+            onClick={postForm}
+            >
+              Submit
+            </Button>
         </Col>
       </Row>
       <Row className='pb-4'>
         <Col>
-        <NavLink href='/Register'>
-        Register
+          <NavLink href='/Register'>
+            Register
         </NavLink>
         </Col>
       </Row>
