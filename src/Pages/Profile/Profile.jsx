@@ -6,7 +6,6 @@ import {
 import Navi from '../../Components/Nav/Nav'
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
-import { cpuFlags } from "systeminformation";
 
 
 
@@ -49,7 +48,7 @@ function Home() {
       rts =  user.routes.map((fl) => {
         return(
           <div>
-            https://radroute.run/{fl.route} or rr -r {fl.route}
+            https://radroute.run/{fl} or rr -r {fl}
           </div>
         )
       }

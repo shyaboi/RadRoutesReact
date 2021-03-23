@@ -11,34 +11,38 @@ import {
   FormText,
   NavLink,
 } from "reactstrap";
-import { AvailableAddOnContext } from "twilio/lib/rest/preview/marketplace/availableAddOn";
+import axios from 'axios';
 import logo from "../../assets/images/rr.png";
 import fetchy from "../../Utils/Fetcher";
 import Navi from "../../Components/Nav/Nav";
-import jwt_decode from "jwt-decode";
+
 let enc
 const Home = (props) => {
   const [type, setType] = useState("...Waiting for file to be loaded");
   const [route, setRoute] = useState("my-rad-route");
   const [routeExists, setExitance] = useState("Availible");
   const [avail, setAvail] = useState("avail");
+  const [file, setFile] = useState();
 
   let jwtEnigma = () => {
     let token = localStorage.getItem('enc')
-    if(token){
-    enc=token
+    if (token) {
+      enc = token
     }
-    else{alert("You're not authorized to view this page \n GITOUT!")}
+    else { alert("You're not authorized to view this page \n GITOUT!") }
   }
 
   const extChange = (e) => {
     let fileInput = e.target.files[0].name;
     let popFile = fileInput.split(".").pop();
     setType(popFile);
+    let fil = e.target.files[0]
+    setFile(fil)
+    console.log(fil)
   };
 
   const ok = (rr) => {
-    
+
     fetchy(`http://localhost:5000/exists/${rr}`).then(async (data) => {
       console.log(data);
       let d = data;
@@ -59,6 +63,21 @@ const Home = (props) => {
     ok(r);
   };
 
+  const submit = () => {
+    console.log(file)
+    var formData = new FormData();
+    formData.append("file", file);
+    formData.append("route", route);
+    formData.append("type", type);
+    formData.append("enc", enc);
+
+    axios.post('http://localhost:5000/file', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    })
+  }
+
   useEffect(() => {
     jwtEnigma()
   }, []);
@@ -70,14 +89,14 @@ const Home = (props) => {
       </Container>
       <Container className="pb-5 mt-5 pt-5 txt-cen ninja">
         <Form
-          method="POST"
-          action="http://localhost:5000/file"
-          encType="multipart/form-data"
+        // method="POST"
+        // action="http://localhost:5000/file"
+        // encType="multipart/form-data"
         >
           <Row className="txt-cen">
             <Col>
-                <img src={logo} alt="rad routes logo" 
-                height="350px"/>
+              <img src={logo} alt="rad routes logo"
+                height="350px" />
             </Col>
           </Row>
           <Row className="txt-cen" xl="2" xs="1">
@@ -97,7 +116,6 @@ const Home = (props) => {
               </FormGroup>
               <Label className={avail}>Your Route is {routeExists}</Label>
             </Col>
-                    <Input hidden name='enc' value={enc}/>
             <Col className="ninja p-5">
               <FormGroup>
                 <Label for="exampleFile">Upload a file for your route:</Label>
@@ -120,7 +138,7 @@ const Home = (props) => {
           </Row>
           <Row>
             <Col>
-              <Button size="lg" className="ninja mt-5">
+              <Button size="lg" onClick={submit} className="ninja mt-5">
                 Submit
               </Button>
             </Col>
