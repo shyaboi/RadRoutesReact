@@ -6,6 +6,7 @@ import {
 import Navi from '../../Components/Nav/Nav'
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
+import { cpuFlags } from "systeminformation";
 
 
 
@@ -38,6 +39,26 @@ function Home() {
   const comingSoon = () => {
 
   }
+
+  let rts;
+  let rr = user.routes
+  const okF = ()=> {
+    if (rr!==undefined) {
+      if(rr.length>0){
+      console.log('okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
+      rts =  user.routes.map((fl) => {
+        return(
+          <div>
+            https://radroute.run/{fl.route} or rr -r {fl.route}
+          </div>
+        )
+      }
+      )}
+      else{rts=<div>no routes yet</div>}
+    }else{rts=<div>no routes yet</div>}
+    
+  }
+okF()
   return (
     <Container>
       <Container>
@@ -85,7 +106,9 @@ function Home() {
                   <Input type="avatar" name="avatar" id="avatar" value={user.avatar} />
                 </Col>
               </Row>
-              <CardText>{user.routes}</CardText>
+          Active Routes: 
+              {rts}
+
               <Button className='p-3 mr-5 mt-3' onClick={comingSoon}>Update Profile</Button>
               <Button className='p-3 mr-5 mt-3' color='primary' onClick={logout}>Logout</Button>
             </CardBody>

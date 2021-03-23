@@ -26,7 +26,7 @@ const Home = (props) => {
   let jwtEnigma = () => {
     let token = localStorage.getItem('enc')
     if(token){
-    var decoded = jwt_decode(token);
+    enc=token
     }
     else{alert("You're not authorized to view this page \n GITOUT!")}
   }
@@ -34,7 +34,6 @@ const Home = (props) => {
   const extChange = (e) => {
     let fileInput = e.target.files[0].name;
     let popFile = fileInput.split(".").pop();
-    console.log(popFile);
     setType(popFile);
   };
 
