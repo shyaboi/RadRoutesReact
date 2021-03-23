@@ -13,20 +13,15 @@ import logo from "../../assets/images/radroutes.png";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
-import { useJwt } from "react-jwt";
 
-const token = "secret";
 
 
 const Logo = (props) => {
-  const { decodedToken, isExpired } = useJwt(token);
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
   const history = useHistory();
 
   useEffect(() => {
-    console.log(decodedToken)
-    console.log(isExpired)
   }, []);
 
   const postForm = async () => {

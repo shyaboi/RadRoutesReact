@@ -6,6 +6,7 @@ import Home from "./Pages/Home/Home";
 import Editor from "./Pages/Editor/Editor";
 import Peep from "./Pages/Peep/Peep";
 import Register from "./Pages/Register/Register.jsx";
+import Profile from "./Pages/Profile/Profile.jsx";
 import "./App.css";
 import {Container} from "reactstrap";
 
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route path="/FileUpload" exact component={FileUpload} />
           <Route path="/Home" exact component={Home} />
+          <Route path="/Profile" exact component={Profile} />
           <Route path="/Editor" exact component={Editor} />
           <Route path="/Peep" exact component={Peep} />
           <Route path="/Register" exact component={Register} />

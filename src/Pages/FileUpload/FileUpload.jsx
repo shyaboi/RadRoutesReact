@@ -15,12 +15,21 @@ import { AvailableAddOnContext } from "twilio/lib/rest/preview/marketplace/avail
 import logo from "../../assets/images/rr.png";
 import fetchy from "../../Utils/Fetcher";
 import Navi from "../../Components/Nav/Nav";
-
+import jwt_decode from "jwt-decode";
+let enc
 const Home = (props) => {
   const [type, setType] = useState("...Waiting for file to be loaded");
   const [route, setRoute] = useState("my-rad-route");
   const [routeExists, setExitance] = useState("Availible");
   const [avail, setAvail] = useState("avail");
+
+  let jwtEnigma = () => {
+    let token = localStorage.getItem('enc')
+    if(token){
+    var decoded = jwt_decode(token);
+    }
+    else{alert("You're not authorized to view this page \n GITOUT!")}
+  }
 
   const extChange = (e) => {
     let fileInput = e.target.files[0].name;
@@ -30,6 +39,7 @@ const Home = (props) => {
   };
 
   const ok = (rr) => {
+    
     fetchy(`http://localhost:5000/exists/${rr}`).then(async (data) => {
       console.log(data);
       let d = data;
@@ -50,7 +60,9 @@ const Home = (props) => {
     ok(r);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    jwtEnigma()
+  }, []);
 
   return (
     <Container>
@@ -65,10 +77,8 @@ const Home = (props) => {
         >
           <Row className="txt-cen">
             <Col>
-              <NavLink href="/">
                 <img src={logo} alt="rad routes logo" 
                 height="350px"/>
-              </NavLink>
             </Col>
           </Row>
           <Row className="txt-cen" xl="2" xs="1">
@@ -88,7 +98,7 @@ const Home = (props) => {
               </FormGroup>
               <Label className={avail}>Your Route is {routeExists}</Label>
             </Col>
-
+                    <Input hidden name='enc' value={enc}/>
             <Col className="ninja p-5">
               <FormGroup>
                 <Label for="exampleFile">Upload a file for your route:</Label>
