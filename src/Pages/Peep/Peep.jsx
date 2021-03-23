@@ -54,9 +54,21 @@ function Peep() {
         <Row xs="1" xl="2">
           {allRoutes.map((fl) => {
             return (
-              <Row className="p-5 mt-5">
+              <Row className="p-5 mt-5 ">
                 <Col>
                   <Card body>
+                    <Row className="d-flex align-items-center shad p-3 mr-5 ml-5">
+                <Col>
+                <img src={fl.user_avatar} className='rndNav' height='70px' width='75px' alt=""/>
+                </Col>
+                      <Col>
+                <CardTitle>
+                        <strong>
+                          Uploaded by: {fl.user_created}
+                        </strong>
+                </CardTitle>
+                </Col>
+                </Row>
                     <CardBody>
                       <Row>
                         <Col>
