@@ -12,11 +12,24 @@ import {
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import rad from "../../assets/images/rad.png";
 import routes from "../../assets/images/routes.png";
+import jwt_decode from "jwt-decode";
 
 const Navi = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState('');
 
-  useEffect(() => {}, []);
+  let jwtEnigma = () => {
+    let token = localStorage.getItem('enc')
+    if(token){
+    var decoded = jwt_decode(token);
+    let cleanDecoded = { 'user': decoded.user, 'email': decoded.email, 'avatar': decoded.avatar, 'routes': decoded.routes, 'joined': decoded.joined, 'd': decoded.morD, }
+    setUser(cleanDecoded)}
+    else{alert("You're not authorized to view this page \n GITOUT!")}
+  }
+
+  useEffect(() => {
+    jwtEnigma()
+  }, []);
 
   const toggle = () => setIsOpen(!isOpen);
   return (
@@ -63,9 +76,9 @@ const Navi = (props) => {
                 </NavLink>
             </NavItem>
           </Nav>
-          <NavbarText>
-            {/* <Form> */}
-
+              <NavLink href="/Profile">
+              <img src={user.avatar} alt="" height='60px' width='65px' className='rndNav shad' />
+                </NavLink>
             <a href="/">
               <NavbarBrand className="ml-4 brand" href="/">
                 <LazyLoadImage
@@ -77,8 +90,6 @@ const Navi = (props) => {
                 />
               </NavbarBrand>
             </a>
-            {/* </Form> */}
-          </NavbarText>
         </Collapse>
       </Navbar>
     </div>
