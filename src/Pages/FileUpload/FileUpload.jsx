@@ -9,7 +9,6 @@ import {
   Label,
   Input,
   FormText,
-  NavLink,
 } from "reactstrap";
 import axios from 'axios';
 import logo from "../../assets/images/rr.png";
