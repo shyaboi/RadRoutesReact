@@ -6,24 +6,29 @@ import {
 import Navi from '../../Components/Nav/Nav'
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
-import { cpuFlags } from "systeminformation";
+import axios from 'axios';
 
 
 
 
 function Home() {
   const [user, setUser] = useState('');
+  const [routes, setRoutes] = useState([]);
   const history = useHistory();
 
   let jwtEnigma = () => {
     let token = localStorage.getItem('enc')
-    if(token){
-    var decoded = jwt_decode(token);
-    let cleanDecoded = { 'user': decoded.user, 'email': decoded.email, 'avatar': decoded.avatar, 'routes': decoded.routes, 'joined': decoded.joined, 'd': decoded.morD, }
-    setUser(cleanDecoded)}
-    else{alert("You're not authorized to view this page \n GITOUT! \n Meh....doesn't matter \n You can't do any fun auth things anyway \n Login to have a good time please.")}
+    if (token) {
+      var decoded = jwt_decode(token);
+      let cleanDecoded = { 'user': decoded.user, 'email': decoded.email, 'avatar': decoded.avatar, 'routes': decoded.routes, 'joined': decoded.joined, 'd': decoded.morD, }
+      setUser(cleanDecoded)
+      setRoutes(decoded.routes)
+    }
+    else { alert("You're not authorized to view this page \n GITOUT! \n Meh....doesn't matter \n You can't do any fun auth things anyway \n Login to have a good time please.") }
   }
-  const logout = ()=> {
+
+
+  const logout = () => {
     console.log('ok')
     localStorage.removeItem('enc')
     alert(`Be Rad ${user.user}\n See you next time`)
@@ -35,85 +40,95 @@ function Home() {
     jwtEnigma()
   }, []);
 
-
   const comingSoon = () => {
 
   }
 
-  let rts;
-  let rr = user.routes
-  const okF = ()=> {
-    if (rr!==undefined) {
-      if(rr.length>0){
-      console.log('okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
-      rts =  user.routes.map((fl) => {
-        return(
-          <div>
-            https://radroute.run/{fl.route} or rr -r {fl.route}
-          </div>
-        )
-      }
-      )}
-      else{rts=<div>no routes yet</div>}
-    }else{rts=<div>no routes yet</div>}
-    
-  }
-okF()
+
   return (
     <Container>
       <Container>
         <Navi />
       </Container>
       <Container className="mt-5 pt-5 txt-cen">
-        <div className='mt-5 pt-5'>
-          <Card>
+        <Card>
+          <Row>
+            <Col>
+              <CardImg top className='rnd mx-auto shad profPic' src={user.avatar} alt="Card image cap" />
+              
+            </Col>
+          </Row>
+          <CardBody>
             <Row>
               <Col>
-                <CardImg top className='rnd mx-auto shad profPic' src={user.avatar} alt="Card image cap" />
+                <CardTitle tag="h1">{user.user}</CardTitle>
+                <CardSubtitle tag="h6" className="mb-2 text-muted">Joined: {user.joined}</CardSubtitle>
+              </Col>
+
+            </Row>
+            <Row className='m-2 p-2'>
+              <Col>
+                User Name:
+                  </Col>
+              <Col>
+                <Input type="username" name="username" id="username" value={user.user} />
               </Col>
             </Row>
-            <CardBody>
-              <Row>
-                <Col>
-                  <CardTitle tag="h1">{user.user}</CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">Joined: {user.joined}</CardSubtitle>
-                </Col>
+            <Row className='m-2 p-2'>
 
-              </Row>
-              <Row className='m-2 p-2'>
-                <Col>
-                  User Name:
+              <Col>
+                Email:
+                </Col>
+              <Col>
+                <Input type="email" name="email" id="email" value={user.email} />
+              </Col>
+            </Row>
+            <Row className='m-2 p-2'>
+
+              <Col>
+                Avatar URL:
+                </Col>
+              <Col>
+                <Input type="avatar" name="avatar" id="avatar" value={user.avatar} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                Active Routes:
+                </Col>
+            </Row>
+            <Row md='1' xl='2'>
+              {routes.map((fl) => {
+                return (
+                  <Col>
+                    <Card>
+                      <CardTitle >Hosted At:</CardTitle>
+                      <CardTitle tag="h3" className='shad p-2 m-2'>
+                        <a href={`https://radroute.run/${fl.route_name}`}>
+                        RadRoute.run/{fl.route_name}
+                        </a>
+                      </CardTitle>
+                      <CardTitle>
+                        Raw Code: 
+                      </CardTitle>
+                      <CardText className='m-2'>
+                        {fl.pFile}
+                        </CardText>
+                      <CardText className='shad m-2'>
+                        File Type: {fl.ext}
+                      </CardText>
+                      <Button color='secondary mb-2 mr-3 ml-3'>Download</Button>
+                      <Button color='secondaryGrad mb-2 mr-3 ml-3'>Run with RR Runner</Button>
+                    </Card>
                   </Col>
-                <Col>
-                  <Input type="username" name="username" id="username" value={user.user} />
-                </Col>
-              </Row>
-              <Row className='m-2 p-2'>
+                )
+              })}
+            </Row>
+            <Button className='p-3 mr-5 mt-4' color='primaryGrad' onClick={comingSoon}>Update Profile</Button>
+            <Button className='p-3 mr-5 mt-4' color='primary' onClick={logout}>Logout</Button>
+          </CardBody>
+        </Card>
 
-                <Col>
-                  Email:
-                </Col>
-                <Col>
-                  <Input type="email" name="email" id="email" value={user.email} />
-                </Col>
-              </Row>
-              <Row className='m-2 p-2'>
-
-                <Col>
-                  Avatar URL:
-                </Col>
-                <Col>
-                  <Input type="avatar" name="avatar" id="avatar" value={user.avatar} />
-                </Col>
-              </Row>
-          Active Routes: 
-              {rts}
-
-              <Button className='p-3 mr-5 mt-3' onClick={comingSoon}>Update Profile</Button>
-              <Button className='p-3 mr-5 mt-3' color='primary' onClick={logout}>Logout</Button>
-            </CardBody>
-          </Card>
-        </div>
       </Container>
     </Container>
   );
