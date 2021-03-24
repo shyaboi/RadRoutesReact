@@ -7,7 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
 } from "reactstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import rad from "../../assets/images/rad.png";

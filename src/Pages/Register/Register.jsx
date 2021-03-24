@@ -18,6 +18,7 @@ const Register = (props) => {
   useEffect(() => {
   }, []);
 
+  // const alerty = ()=> {alert('Thanks for signing up! \n You will be taken to the login page now.')}
   return (
     <Container id="logoCon" className="txt-cen" fluid>
       <Container>
@@ -42,7 +43,7 @@ const Register = (props) => {
                 type="username"
                 name="username"
                 id="user"
-                placeholder="MeAmRad"
+                placeholder="IAmRad"
               />
             </FormGroup>
             <FormGroup className="mt-4 mr-sm-2 mb-sm-0 sec">
@@ -52,8 +53,8 @@ const Register = (props) => {
               <Input
                 type="email"
                 name="email"
-                id="exampleEmail"
-                placeholder="something@idk.cool"
+                id="Email"
+                placeholder="rad@radroutes.com"
               />
             </FormGroup>
             <FormGroup className="mt-4 mr-sm-2 mb-sm-0">
@@ -78,7 +79,7 @@ const Register = (props) => {
                 placeholder="give us your data plz"
               />
             </FormGroup>
-            <Button className="mt-4">Submit</Button>
+            <Button className="mt-4" >Submit</Button>
           </Form>
         </Col>
       </Row>
