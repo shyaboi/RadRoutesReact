@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import Navi from "../../Components/Nav/Nav";
 import fetchy from "../../Utils/Fetcher";
+import axios from 'axios';
 
 function Peep() {
   const [allRoutes, setAllRoutes] = useState([]);
@@ -23,7 +24,7 @@ function Peep() {
       setAllRoutes(d);
     });
   };
-
+  
   useEffect(() => {
     data();
     setTrunx("trunc");
@@ -42,25 +43,40 @@ function Peep() {
   };
 
 
-  const Da = (e)  => {
+  // const Da = (e)  => {
     
-    let val =  e.value
-    console.log(val)
-    var userInfo=  fetchy(`/uid/${val}`).then(async (dataa) => {
-      // console.log(data);
-      let dd = await dataa;
-      let ui = {'ava':dd[0].avatar,'user':dd[0].user}
-      console.log(ui)
-      return ui
-    });
-    console.log(userInfo.ava)
-    return(
-      <div>
-       {userInfo.ava}
-      </div>
-    )
-  };
-
+  //   let val =  e.value
+  //   console.log(val)
+    // var userInfo=  fetchy(`/uid/${val}`).then(async (dataa) => {
+    //   // console.log(data);
+    //   let dd = await dataa;
+    //   let ui = {'ava':dd[0].avatar,'user':dd[0].user}
+    //   console.log(ui)
+    //   ben = ui
+    //   // return ui
+    // });
+  //   console.log(userInfo.ava)
+  //   return(
+  //     <div>
+  //      {userInfo.ava}
+  //     </div>
+  //   )
+  // };
+  let getUser = async (l)=> {
+    console.log(l)
+    let user;
+    let ava;
+     let uu = await axios.get(`/uid/${l}`)
+  .then(function (response) {
+    // handle success
+    if (response) {
+      let d = response;
+      user = d.data[0].user
+      return 'ok'
+    }else{console.log('ok')}
+  })
+  return(<div>{uu}</div>)
+  }
   return (
     <Container fluid>
       <Container>
@@ -80,7 +96,10 @@ function Peep() {
                   <Card body>
                     <Row className="d-flex align-items-center shad p-3 mr-5 ml-5">
                 <Col>
-                <Da value={fl.user_id}/>
+                User ID: 
+                </Col>
+                <Col>
+                {fl.user_id}
                 </Col>
                 </Row>
                     <CardBody>

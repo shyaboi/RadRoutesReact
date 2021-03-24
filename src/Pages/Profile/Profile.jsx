@@ -6,7 +6,6 @@ import {
 import Navi from '../../Components/Nav/Nav'
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
 
 
 
