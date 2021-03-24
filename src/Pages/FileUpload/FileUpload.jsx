@@ -19,7 +19,7 @@ import Navi from "../../Components/Nav/Nav";
 let enc
 const Home = (props) => {
   const [type, setType] = useState("...Waiting for file to be loaded");
-  const [route, setRoute] = useState("my-rad-route");
+  const [route, setRoute] = useState('');
   const [routeExists, setExitance] = useState("Availible");
   const [avail, setAvail] = useState("avail");
   const [file, setFile] = useState();
@@ -63,19 +63,32 @@ const Home = (props) => {
     ok(r);
   };
 
-  const submit = () => {
-    console.log(file)
+  const submit = async () => {
+    if(avail==='avail'){
     var formData = new FormData();
     formData.append("file", file);
     formData.append("route", route);
     formData.append("type", type);
     formData.append("enc", enc);
-
     axios.post('http://localhost:5000/file', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       }
+    }).then(function (response) {
+      let rData = response
+      console.log()
+      localStorage.removeItem('enc')
+      localStorage.setItem('enc', rData.data)
     })
+  
+  }if (avail==='notAvail') {
+      alert(`Please choose another route, \n ${route} is taken`)
+      return
+    }
+    if (route==='') {
+      alert('Please enter a valid route. \n Your route field is currently blank')
+      return
+    }
   }
 
   useEffect(() => {

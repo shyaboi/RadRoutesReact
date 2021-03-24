@@ -1,3 +1,4 @@
+import userEvent from "@testing-library/user-event";
 import React, { useState, useEffect, Suspense } from "react";
 
 import { Container, Row, Col } from "reactstrap";
@@ -15,10 +16,10 @@ function Peep() {
   const [allRoutes, setAllRoutes] = useState([]);
   const [trunx, setTrunx] = useState("");
 
-  const data = (props) => {
+  const data = async (props) => {
     fetchy("http://localhost:5000/all").then(async (data) => {
-      console.log(data);
-      let d = data;
+      // console.log(data);
+      let d = await data;
       setAllRoutes(d);
     });
   };
@@ -40,6 +41,26 @@ function Peep() {
     }
   };
 
+
+  const Da = (e)  => {
+    
+    let val =  e.value
+    console.log(val)
+    var userInfo=  fetchy(`/uid/${val}`).then(async (dataa) => {
+      // console.log(data);
+      let dd = await dataa;
+      let ui = {'ava':dd[0].avatar,'user':dd[0].user}
+      console.log(ui)
+      return ui
+    });
+    console.log(userInfo.ava)
+    return(
+      <div>
+       {userInfo.ava}
+      </div>
+    )
+  };
+
   return (
     <Container fluid>
       <Container>
@@ -59,14 +80,7 @@ function Peep() {
                   <Card body>
                     <Row className="d-flex align-items-center shad p-3 mr-5 ml-5">
                 <Col>
-                <img src={fl.user_avatar} className='rndNav' height='70px' width='75px' alt=""/>
-                </Col>
-                      <Col>
-                <CardTitle>
-                        <strong>
-                          Uploaded by: {fl.user_created}
-                        </strong>
-                </CardTitle>
+                <Da value={fl.user_id}/>
                 </Col>
                 </Row>
                     <CardBody>
@@ -76,7 +90,7 @@ function Peep() {
                           <strong>
                             <a href={"https://radroute.run/" + fl.route}>
                               <CardHeader className="raddGrad p-3 rounded-pill">
-                                https://RadRoute.run/{fl.route}
+                                https://RadRoute.run/{fl.route_name}
                               </CardHeader>
                             </a>
                           </strong>
@@ -104,7 +118,7 @@ function Peep() {
                       <Row>
                         <Col>
                           <strong>
-                            <CardTitle>File Name</CardTitle>
+                            <CardTitle>Route_ID</CardTitle>
                             {fl.route_id}
                           </strong>
                         </Col>
