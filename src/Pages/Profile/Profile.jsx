@@ -16,6 +16,7 @@ import Navi from "../../Components/Nav/Nav";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import CodeBlock from "@tenon-io/tenon-codeblock";
 
 function Home() {
   const [user, setUser] = useState("");
@@ -177,9 +178,12 @@ function Home() {
                         File Type: {fl.ext}
                       </CardText>
                       <Button color='secondary mb-2 mr-3 ml-3'>Download</Button>
-                      <Button color='secondaryGrad mb-2 mr-3 ml-3'>
-                        Run with RR Runner
-                      </Button>
+                      <Row>
+                    <Col>
+                    <CodeBlock
+                    codeString={`rr -r ${fl.route_name}`}/>
+                    </Col>
+                      </Row>
                     </Card>
                   </Col>
                 );

@@ -15,6 +15,8 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import axios from 'axios';
+
 //import ace editor_---------------------------------------
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
@@ -33,6 +35,7 @@ import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/theme-solarized_light";
 //END import ace editor_---------------------------------------
 import Navi from "../../Components/Nav/Nav";
+import fetchy from "../../Utils/Fetcher";
 
 
 // ssetup the editor function for the component
@@ -74,6 +77,11 @@ function Editor() {
   let [route, setRoute] = useState("");
   //function statew
   let [funk, setFunk] = useState("");
+
+  const [avail, setAvail] = useState("avail");
+  const [routeExists, setExitance] = useState("Availible");
+
+
   //END Post states--------------------------------------------------------------------------------------------
 
   //setup use effect
@@ -109,33 +117,57 @@ function Editor() {
       setLang("Python");
     }
   }, []);
+  const routeChange = (e) => {
+    let r = e.target.value;
+    setRoute(r);
+    routeChecker(r);
+  };
+const routeChecker = (rr)=> {
+  
+
+  fetchy(`http://localhost:5000/exists/${rr}`).then(async (data) => {
+    console.log(data);
+    let d = data;
+    if (d === false) {
+      setExitance("Route Availible");
+      setAvail("avail");
+    }
+    if (d === true) {
+      setExitance("Route NOT Availible");
+      setAvail("notAvail");
+    }
+  });
+};
 
   //setting up the submit function for the post
-  const onSubmit = async (event) => {
-    // prevent redirect
-    event.preventDefault();
-    //set the final funtion in state
-    setIsLoading(true);
-    //make a new xmlhttp post
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:5000/file", true);
-    //set headers
-    xhr.setRequestHeader("Content-Type", "application/json");
-    //send the post
-    xhr.send(
-      JSON.stringify({
-        route: route,
-        funktion: funk,
-      })
-    );
 
-    // reset form and loading state
-    setIsLoading(false);
-    //alert to new route
-    alert(`Redirecting you to https://uselessapi.com/u-c-r/${route}`);
-    //redirect to new route in window
-    window.location.replace(`https://uselessapi.com/u-c-r/${route}`);
-  };
+  const onSubmit = async () => {
+    if(avail==='avail'){
+      let bod = JSON.stringify({
+        route: route,
+        pFile: funk,
+        type: 'py',
+        enc : localStorage.getItem('enc')
+      })
+    axios.post('http://localhost:5000/efile', bod, {
+    }).then(function (response) {
+      let rData = response
+      console.log(rData)
+      localStorage.removeItem('enc')
+      localStorage.removeItem('Funk')
+      localStorage.setItem('enc', rData.data)
+      alert('Your file has been uploaded to Rad Routes!')
+    })
+  
+  }if (avail==='notAvail') {
+      alert(`Please choose another route, \n ${route} is taken`)
+      return
+    }
+    if (route==='') {
+      alert('Please enter a valid route. \n Your route field is currently blank')
+      return
+    }
+  }
 
   //change theme funtion
   const changeThemeValue = (e) => {
@@ -235,7 +267,10 @@ function Editor() {
             <Input
               type="route"
               value={route}
-              onChange={(e) => setRoute(e.target.value)}
+              onChange={(e) => {
+                routeChange(e);
+              }}
+              
               name="route"
               id="route"
               placeholder="my-rad-api"

@@ -40,8 +40,7 @@ const Navi = (props) => {
         expand="md"
         className="fixed-top muhNav radGrad font-weight-bold "
       >
-        <a href="/">
-          <NavbarBrand className="ml-4 brand" href="/">
+          <NavbarBrand className="ml-4 brand" href="/Home">
             <LazyLoadImage
               id="pics"
               effect="blur"
@@ -50,7 +49,6 @@ const Navi = (props) => {
               width="100px"
             />
           </NavbarBrand>
-        </a>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto " navbar>
@@ -80,8 +78,7 @@ const Navi = (props) => {
               <NavLink href="/Profile">
               <img src={user.avatar} alt="" height='60px' width='65px' className='rndNav shad' />
                 </NavLink>
-            <a href="/">
-              <NavbarBrand className="ml-4 brand" href="/">
+              <NavbarBrand className="ml-4 brand" href="/Profile">
                 <LazyLoadImage
                   id="pics"
                   effect="blur"
@@ -90,7 +87,6 @@ const Navi = (props) => {
                   width="130px"
                 />
               </NavbarBrand>
-            </a>
         </Collapse>
       </Navbar>
     </div>
