@@ -15,7 +15,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import axios from 'axios';
+import axios from "axios";
 
 //import ace editor_---------------------------------------
 import AceEditor from "react-ace";
@@ -36,7 +36,6 @@ import "ace-builds/src-noconflict/theme-solarized_light";
 //END import ace editor_---------------------------------------
 import Navi from "../../Components/Nav/Nav";
 import fetchy from "../../Utils/Fetcher";
-
 
 // ssetup the editor function for the component
 function Editor() {
@@ -81,7 +80,6 @@ function Editor() {
   const [avail, setAvail] = useState("avail");
   const [routeExists, setExitance] = useState("Availible");
 
-
   //END Post states--------------------------------------------------------------------------------------------
 
   //setup use effect
@@ -122,52 +120,53 @@ function Editor() {
     setRoute(r);
     routeChecker(r);
   };
-const routeChecker = (rr)=> {
-  
-
-  fetchy(`http://localhost:5000/exists/${rr}`).then(async (data) => {
-    console.log(data);
-    let d = data;
-    if (d === false) {
-      setExitance("Route Availible");
-      setAvail("avail");
-    }
-    if (d === true) {
-      setExitance("Route NOT Availible");
-      setAvail("notAvail");
-    }
-  });
-};
+  const routeChecker = (rr) => {
+    fetchy(`http://localhost:5000/exists/${rr}`).then(async (data) => {
+      console.log(data);
+      let d = data;
+      if (d === false) {
+        setExitance("Route Availible");
+        setAvail("avail");
+      }
+      if (d === true) {
+        setExitance("Route NOT Availible");
+        setAvail("notAvail");
+      }
+    });
+  };
 
   //setting up the submit function for the post
 
   const onSubmit = async () => {
-    if(avail==='avail'){
+    if (avail === "avail") {
       let bod = JSON.stringify({
         route: route,
         pFile: funk,
-        type: 'py',
-        enc : localStorage.getItem('enc')
-      })
-    axios.post('http://localhost:5000/efile', bod, {
-    }).then(function (response) {
-      let rData = response
-      console.log(rData)
-      localStorage.removeItem('enc')
-      localStorage.removeItem('Funk')
-      localStorage.setItem('enc', rData.data)
-      alert('Your file has been uploaded to Rad Routes!')
-    })
-  
-  }if (avail==='notAvail') {
-      alert(`Please choose another route, \n ${route} is taken`)
-      return
+        type: "py",
+        enc: localStorage.getItem("enc"),
+      });
+      axios
+        .post("http://localhost:5000/efile", bod, {})
+        .then(function (response) {
+          let rData = response;
+          console.log(rData);
+          localStorage.removeItem("enc");
+          localStorage.removeItem("Funk");
+          localStorage.setItem("enc", rData.data);
+          alert("Your file has been uploaded to Rad Routes!");
+        });
     }
-    if (route==='') {
-      alert('Please enter a valid route. \n Your route field is currently blank')
-      return
+    if (avail === "notAvail") {
+      alert(`Please choose another route, \n ${route} is taken`);
+      return;
     }
-  }
+    if (route === "") {
+      alert(
+        "Please enter a valid route. \n Your route field is currently blank"
+      );
+      return;
+    }
+  };
 
   //change theme funtion
   const changeThemeValue = (e) => {
@@ -194,7 +193,7 @@ const routeChecker = (rr)=> {
     //set theme to e.target
     let wrap = e.currentTarget.value;
     ///if wrap is true
-    if (wrap === 1) {
+    if (wrap === "1") {
       //set wrap state to true
       setWrapState(true);
       setWrapStateText("Enabled");
@@ -221,7 +220,7 @@ const routeChecker = (rr)=> {
 
   const funkChange = (e) => {
     setFunk(e);
-    localStorage.setItem("Funk", funk)
+    localStorage.setItem("Funk", funk);
   };
 
   return (
@@ -233,92 +232,95 @@ const routeChecker = (rr)=> {
           </Col>
         </Row>
       </Container>
-      <Container className="mt-5 pt-5 txt-cen">
+      <Container className='mt-5 pt-5 txt-cen'>
         <Row>
-          <Col id="editor-head">
-            <Label for="exampleText">
+          <Col id='editor-head'>
+            <Label for='exampleText'>
               <h3>Create a Rad Route!</h3>
             </Label>
           </Col>
         </Row>
         <Form onSubmit={onSubmit}>
-          <FormGroup className="m-1 ninja">
+          <FormGroup className='m-1 ninja'>
             <Row>
               <Col>
-                <Label className="prim">
+                <Label className='prim'>
                   <h4>Route will be hosted at </h4>
                 </Label>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Label className="sec">
+                <Label className='sec'>
                   <h4>RadRoute.run/files/</h4>
                 </Label>
-                <Label className="primGrad">
-                  <h4>
-                  {route}
-                  </h4>
+
+                <Label className='primGrad'>
+                  <h4>{route}</h4>
                 </Label>
               </Col>
             </Row>
             <Row>
               <Col>
-            <Input
-              type="route"
-              value={route}
-              onChange={(e) => {
-                routeChange(e);
-              }}
-              
-              name="route"
-              id="route"
-              placeholder="my-rad-api"
-            />
+                <Label className={avail}> {routeExists}</Label>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Input
+                  type='route'
+                  value={route}
+                  onChange={(e) => {
+                    routeChange(e);
+                  }}
+                  name='route'
+                  id='route'
+                  placeholder='my-rad-api'
+                />
               </Col>
             </Row>
           </FormGroup>
-          <Row fluid id="drop-row" className="m-1 ">
+          <Row fluid id='drop-row' className='m-1 '>
             <Dropdown isOpen={dropdownThemeOpen} toggle={toggleTheme}>
-              <DropdownToggle caret color="primary" className="m-1 ninja">
+              <DropdownToggle caret color='primary' className='m-1 ninja'>
                 {ThemeText}
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Pick Your Editor Theme</DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="kuroir">
+                <DropdownItem onClick={changeThemeValue} value='kuroir'>
                   Kuroir
                 </DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="github">
+                <DropdownItem onClick={changeThemeValue} value='github'>
                   GitHub
                 </DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="terminal">
+                <DropdownItem onClick={changeThemeValue} value='terminal'>
                   Terminal
                 </DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="tomorrow">
+                <DropdownItem onClick={changeThemeValue} value='tomorrow'>
                   Tomorrow
                 </DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="twilight">
+                <DropdownItem onClick={changeThemeValue} value='twilight'>
                   Twilight
                 </DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="xcode">
+                <DropdownItem onClick={changeThemeValue} value='xcode'>
                   Xcode
                 </DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="textmate">
+                <DropdownItem onClick={changeThemeValue} value='textmate'>
                   textmate
                 </DropdownItem>
-                <DropdownItem onClick={changeThemeValue} value="solarized_dark">
+                <DropdownItem onClick={changeThemeValue} value='solarized_dark'>
                   Solarized Dark
                 </DropdownItem>
                 <DropdownItem
                   onClick={changeThemeValue}
-                  value="solarized_light"
+                  value='solarized_light'
                 >
                   Solarized Light
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
             <Dropdown isOpen={dropdownFontOpen} toggle={toggleFontSize}>
-              <DropdownToggle caret color="primaryGrad" className="m-1 ninja">
+              <DropdownToggle caret color='primaryGrad' className='m-1 ninja'>
                 {fontSize}
               </DropdownToggle>
               <DropdownMenu>
@@ -362,7 +364,7 @@ const routeChecker = (rr)=> {
               </DropdownMenu>
             </Dropdown>
             <Dropdown isOpen={dropdownWrapOpen} toggle={toggleWrap}>
-              <DropdownToggle caret color="secondary" className="m-1 ninja">
+              <DropdownToggle caret color='secondary' className='m-1 ninja'>
                 Wrap {wrapStateText}
               </DropdownToggle>
               <DropdownMenu>
@@ -376,7 +378,7 @@ const routeChecker = (rr)=> {
               </DropdownMenu>
             </Dropdown>
             <Dropdown isOpen={dropdownLangOpen} toggle={toggleLang}>
-              <DropdownToggle caret color="secondaryGrad" className="m-1 ninja">
+              <DropdownToggle caret color='secondaryGrad' className='m-1 ninja'>
                 {lang.charAt(0).toUpperCase() + lang.slice(1)}
               </DropdownToggle>
               <DropdownMenu>
@@ -399,8 +401,8 @@ const routeChecker = (rr)=> {
           <Row>
             <Col>
               <AceEditor
-                height="50vh"
-                width="60vw"
+                height='50vh'
+                width='60vw'
                 mode={lang}
                 theme={themeState}
                 fontSize={parseInt(fontSize)}
@@ -408,18 +410,18 @@ const routeChecker = (rr)=> {
                 editorProps={{ $blockScrolling: true }}
                 value={funk}
                 onChange={funkChange}
-                id="funktion"
+                id='funktion'
                 placeholder="response.send('hiworld')"
-                type="textarea"
-                name="funktion"
-                showGutter="true"
+                type='textarea'
+                name='funktion'
+                showGutter={true}
               />
             </Col>
           </Row>
           <hr></hr>
-          <Row id="submitRow">
+          <Row id='submitRow'>
             <Col>
-              <Button type="submit" color="primary">
+              <Button type='submit' color='primary'>
                 Submit
               </Button>
             </Col>
