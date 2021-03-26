@@ -139,10 +139,25 @@ function Editor() {
 
   const onSubmit = async () => {
     if (avail === "avail") {
+      console.log(lang)
+      let shortLang = lang
+      switch (shortLang) {
+        case 'python':
+          shortLang = 'py'
+          break;
+        case 'ruby':
+          shortLang='rb'
+          break;
+        case 'javascript':
+          shortLang='js'
+          break;
+        default:
+          break;
+      }
       let bod = JSON.stringify({
         route: route,
         pFile: funk,
-        type: "py",
+        type: shortLang,
         enc: localStorage.getItem("enc"),
       });
       axios
@@ -384,7 +399,7 @@ function Editor() {
               <DropdownMenu>
                 <DropdownItem header>Set The Language</DropdownItem>
                 <DropdownItem onClick={changeLangValue} value={"javascript"}>
-                  Node
+                  JavaScript (Node)
                 </DropdownItem>
                 <DropdownItem onClick={changeLangValue} value={"python"}>
                   Python
@@ -411,7 +426,7 @@ function Editor() {
                 value={funk}
                 onChange={funkChange}
                 id='funktion'
-                placeholder="response.send('hiworld')"
+                placeholder="print('hello world')"
                 type='textarea'
                 name='funktion'
                 showGutter={true}

@@ -100,11 +100,7 @@ const Home = (props) => {
         <Navi />
       </Container>
       <Container className="pb-5 mt-5 pt-5 txt-cen ninja">
-        <Form
-        // method="POST"
-        // action="http://localhost:5000/file"
-        // encType="multipart/form-data"
-        >
+        <Form>
           <Row className="txt-cen">
             <Col>
               <img src={logo} alt="rad routes logo"
