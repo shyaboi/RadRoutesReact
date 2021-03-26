@@ -22,7 +22,7 @@ const Register = (props) => {
   return (
     <Container id="logoCon" className="txt-cen" fluid>
       <Container>
-        <Row className="mt-4">
+        <Row className="mt-5">
           <Col id="logo">
             <img src={logo} alt="rad routes logo" height="250px" />
           </Col>
@@ -68,7 +68,7 @@ const Register = (props) => {
                 placeholder="don't tell!"
               />
             </FormGroup>
-            <FormGroup className="mt-4 mr-sm-2 mb-sm-0 sec">
+            {/* <FormGroup className="mt-4 mr-sm-2 mb-sm-0 sec">
               <Label for="exampleEmail" className="mr-sm-2">
                 <h4>Mor Personal Data</h4>
               </Label>
@@ -78,7 +78,7 @@ const Register = (props) => {
                 id="data"
                 placeholder="give us your data plz"
               />
-            </FormGroup>
+            </FormGroup> */}
             <Button className="mt-4" >Submit</Button>
           </Form>
         </Col>

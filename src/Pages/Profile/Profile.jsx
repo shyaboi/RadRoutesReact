@@ -76,6 +76,7 @@ function Home() {
       localStorage.removeItem('enc')
       localStorage.setItem('enc', rData.data)
       jwtEnigma()
+      alert("Profile Updated!")
     });
   };
 
