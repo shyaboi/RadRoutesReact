@@ -19,9 +19,9 @@ function Peep() {
   const [trunx, setTrunx] = useState("");
 
   const data = async (props) => {
-    fetchy("http://localhost:5000/all").then(async (data) => {
-      // console.log(data);
-      let d = await data;
+    fetchy("/all").then(async (data) => {
+      console.log(data.userTrunk);
+      let d = await data.allRoutes;
       setAllRoutes(d);
     });
   };
@@ -99,14 +99,7 @@ function Peep() {
                           </CardText>
                         </Col>
                       </Row>
-                      {/* <Row>
-                        <Col>
-                          <strong>
-                            <CardTitle>Route_ID</CardTitle>
-                            {fl.route_id}
-                          </strong>
-                        </Col>
-                      </Row> */}
+                    
                           <hr />
 
                       <Row className='shad '>

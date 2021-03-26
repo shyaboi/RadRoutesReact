@@ -12,10 +12,13 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import rad from "../../assets/images/rad.png";
 import routes from "../../assets/images/routes.png";
 import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
+
 
 const Navi = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState('');
+  const history = useHistory();
 
   let jwtEnigma = () => {
     let token = localStorage.getItem('enc')
@@ -25,7 +28,9 @@ const Navi = (props) => {
     setUser(cleanDecoded)
     // console.log(cleanDecoded)
   }
-    else{alert("You're not authorized to view this page \n GITOUT!")}
+    else{
+      history.push("/");
+  }
   }
 
   useEffect(() => {
