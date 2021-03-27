@@ -28,7 +28,7 @@ const Home = (props) => {
     if (token) {
       enc = token
     }
-    else { alert("You're not authorized to view this page \n GITOUT!") }
+    else { console.log("You're not supposed to be here...") }
   }
 
   const extChange = (e) => {

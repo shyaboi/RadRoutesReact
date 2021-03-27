@@ -42,9 +42,9 @@ function Home() {
       setUser(cleanDecoded);
       setRoutes(decoded.routes);
     } else {
-      alert(
-        "You're not authorized to view this page \n GITOUT! \n Meh....doesn't matter \n You can't do any fun auth things anyway \n Login to have a good time please."
-      );
+      // alert(
+      //   "You're not authorized to view this page \n GITOUT! \n Meh....doesn't matter \n You can't do any fun auth things anyway \n Login to have a good time please."
+      // );
     }
   };
 

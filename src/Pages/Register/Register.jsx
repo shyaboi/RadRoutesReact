@@ -24,7 +24,10 @@ const Register = (props) => {
       <Container>
         <Row className="mt-5">
           <Col id="logo">
+            <NavLink href='/'>
+
             <img src={logo} alt="rad routes logo" height="250px" />
+            </NavLink>
           </Col>
         </Row>
       </Container>
@@ -32,7 +35,7 @@ const Register = (props) => {
         <Col>
           <Form
             method="POST"
-            action="http://localhost:5000/register"
+            action="http://0.0.0.0:5000/register"
             encType="multipart/form-data"
           >
             <FormGroup className="mr-sm-2 mb-sm-0 sec">
@@ -68,17 +71,6 @@ const Register = (props) => {
                 placeholder="don't tell!"
               />
             </FormGroup>
-            {/* <FormGroup className="mt-4 mr-sm-2 mb-sm-0 sec">
-              <Label for="exampleEmail" className="mr-sm-2">
-                <h4>Mor Personal Data</h4>
-              </Label>
-              <Input
-                type="data"
-                name="morPersonalData"
-                id="data"
-                placeholder="give us your data plz"
-              />
-            </FormGroup> */}
             <Button className="mt-4" >Submit</Button>
           </Form>
         </Col>
