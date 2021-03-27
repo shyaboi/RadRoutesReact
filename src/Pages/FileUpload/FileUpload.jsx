@@ -42,7 +42,7 @@ const Home = (props) => {
 
   const ok = (rr) => {
 
-    fetchy(`/exists/${rr}`).then(async (data) => {
+    fetchy(`http://radroutes.com/exists/${rr}`).then(async (data) => {
       console.log(data);
       let d = data;
       if (d === false) {
@@ -69,7 +69,7 @@ const Home = (props) => {
     formData.append("route", route);
     formData.append("type", type);
     formData.append("enc", enc);
-    axios.post('/file', formData, {
+    axios.post('http://radroutes.com/file', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       }

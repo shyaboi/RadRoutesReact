@@ -71,7 +71,7 @@ function Home() {
       avatar: avaCheck,
       enc: localStorage.getItem("enc"),
     });
-    axios.post("/udp", bod).then(function (response) {
+    axios.post("http://radroute.run/udp", bod).then(function (response) {
       let rData = response;
       localStorage.removeItem('enc')
       localStorage.setItem('enc', rData.data)

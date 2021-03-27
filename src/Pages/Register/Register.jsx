@@ -35,7 +35,7 @@ const Register = (props) => {
         <Col>
           <Form
             method="POST"
-            action="/register"
+            action="http://radroutes.com/register"
             encType="multipart/form-data"
           >
             <FormGroup className="mr-sm-2 mb-sm-0 sec">
@@ -77,7 +77,7 @@ const Register = (props) => {
       </Row>
       <Row className="pb-4">
         <Col>
-          <NavLink href="/">Login</NavLink>
+          <NavLink href="/Login">Login</NavLink>
         </Col>
       </Row>
     </Container>
