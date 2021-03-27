@@ -16,7 +16,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-const Logo = (props) => {
+const Login = (props) => {
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
   const history = useHistory();
@@ -57,7 +57,9 @@ const Logo = (props) => {
 
         <Row className="mt-4">
           <Col id="logo">
+            <NavLink href='/'>
             <img src={logo} alt="rad routes logo" height='350px' />
+            </NavLink>
           </Col>
         </Row>
       </Container>
@@ -108,4 +110,4 @@ const Logo = (props) => {
     </Container>
   );
 };
-export default Logo;
+export default Login;

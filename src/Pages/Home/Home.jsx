@@ -16,7 +16,9 @@ function Home() {
     var decoded = jwt_decode(token);
     let cleanDecoded = { 'user': decoded.user, 'email': decoded.email, 'avatar': decoded.avatar, 'routes': decoded.routes, 'joined': decoded.joined, 'd': decoded.morD, }
     setUser(cleanDecoded)}
-    else{alert("You're not authorized to view this page \n GITOUT!")}
+    else{
+      // alert("You're not authorized to view this page \n GITOUT!")
+    }
   }
 
 

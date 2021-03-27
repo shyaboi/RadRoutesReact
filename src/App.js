@@ -7,6 +7,8 @@ import Editor from "./Pages/Editor/Editor";
 import Peep from "./Pages/Peep/Peep";
 import Register from "./Pages/Register/Register.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
+import Splash from "./Pages/Splash/Splash.jsx";
+import Documentation from "./Pages/Documentation/Docs.jsx";
 import "./App.css";
 import {Container} from "reactstrap";
 
@@ -17,11 +19,14 @@ function App() {
   return (
     <Router>
       <Container fluid>
-        <Route path="/" exact component={Login} />
+        <Route path="/" exact component={Splash} />
+
       </Container>
       <div>
         <Switch>
           <Route path="/FileUpload" exact component={FileUpload} />
+          <Route path="/Documentation" exact component={Documentation} />
+          <Route path="/Login" exact component={Login} />
           <Route path="/Home" exact component={Home} />
           <Route path="/Profile" exact component={Profile} />
           <Route path="/Editor" exact component={Editor} />

@@ -17,12 +17,15 @@ import CodeBlock from "@tenon-io/tenon-codeblock";
 function Peep() {
   const [allRoutes, setAllRoutes] = useState([]);
   const [trunx, setTrunx] = useState("");
+  const [userD, setUserD] = useState("");
 
   const data = async (props) => {
     fetchy("/all").then(async (data) => {
       console.log(data.userTrunk);
-      let d = await data.allRoutes;
-      setAllRoutes(d);
+      let rd = await data.allRoutes;
+      let ud = await data.userTrunk;
+      setAllRoutes(rd);
+      setUserD(ud);
     });
   };
   
@@ -43,7 +46,30 @@ function Peep() {
     }
   };
 
+let ok = (e)=> {
+  let userObj
+  if (userD){
 
+    userObj = userD.find(obj => obj.user_id === e);
+    return(<div>
+      <CardTitle>
+      User Name:
+      {' '}
+        <strong>
+         {userObj.user}
+        </strong>
+        </CardTitle>
+      <img className='rndNav' height='75px' width='75px' src={userObj.avatar} alt=""/>
+
+    </div>)
+  }
+  else{return(
+    <div>Loading....</div>
+  )}
+  console.log(userObj)
+ 
+
+}
 
   return (
     <Container fluid>
@@ -64,7 +90,7 @@ function Peep() {
                   <Card body>
                     <Row className="d-flex align-items-center shad p-3 mr-5 ml-5">
                 <Col>
-                User ID :{" "+fl.user_id}
+                {ok(fl.user_id)}
                 </Col>
                 <Col>
                           <CardTitle>Language:</CardTitle>
