@@ -121,7 +121,7 @@ function Editor() {
     routeChecker(r);
   };
   const routeChecker = (rr) => {
-    fetchy(`http://localhost:5000/exists/${rr}`).then(async (data) => {
+    fetchy(`http://radroute.run/exists/${rr}`).then(async (data) => {
       console.log(data);
       let d = data;
       if (d === false) {
@@ -161,7 +161,7 @@ function Editor() {
         enc: localStorage.getItem("enc"),
       });
       axios
-        .post("http://localhost:5000/efile", bod, {})
+        .post("http://radroute.run/efile", bod, {})
         .then(function (response) {
           let rData = response;
           console.log(rData);

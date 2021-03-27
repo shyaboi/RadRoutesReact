@@ -20,7 +20,7 @@ function Peep() {
   const [userD, setUserD] = useState("");
 
   const data = async (props) => {
-    fetchy("/all").then(async (data) => {
+    fetchy("http://radroute.run/all").then(async (data) => {
       console.log(data.userTrunk);
       let rd = await data.allRoutes;
       let ud = await data.userTrunk;
