@@ -41,7 +41,7 @@ const Home = (props) => {
   };
 
   const ok = (rr) => {
-    axios.get(`http://radroute.run/${rr}`)
+    axios.get(`https://radroute.run/${rr}`)
     .then(function (data) {
       console.log(data);
       let d = data;
@@ -69,7 +69,7 @@ const Home = (props) => {
     formData.append("route", route);
     formData.append("type", type);
     formData.append("enc", enc);
-    axios.post('http://radroute.run/file', formData, {
+    axios.post('https://radroute.run/file', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       }
