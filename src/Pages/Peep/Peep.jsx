@@ -102,7 +102,7 @@ let ok = (e)=> {
                         <Col>
                           <strong>Route:</strong>
                           <strong>
-                            <a href={"https://radroute.run/" + fl.route}>
+                            <a href={"https://radroute.run/files/" + fl.route}>
                               <CardHeader className="raddGrad p-3 rounded-pill">
                                 https://RadRoute.run/{fl.route_name}
                               </CardHeader>
