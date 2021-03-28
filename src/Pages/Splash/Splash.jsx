@@ -11,13 +11,14 @@ const Splash = (props) => {
     let token = localStorage.getItem("enc");
     if (token) {
       console.log("authed before");
-      history.push("/Profile");
+      history.push("/Home");
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    checkAuth()
+  }, []);
 
-  const postForm = async () => {};
 
   return (
     <Container id='logoCon' className='txt-cen' fluid>
