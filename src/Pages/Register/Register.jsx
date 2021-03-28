@@ -25,8 +25,11 @@ const Register = (props) => {
         <Row className="mt-5">
           <Col id="logo">
             <NavLink href='/'>
-
-            <img src={logo} alt="rad routes logo" height="250px" />
+            <img
+             className='img-fluid'
+             width='30%'
+               src={logo} alt="rad routes logo"
+                />
             </NavLink>
           </Col>
         </Row>
@@ -71,7 +74,7 @@ const Register = (props) => {
                 placeholder="don't tell!"
               />
             </FormGroup>
-            <Button className="mt-4" >Submit</Button>
+            <Button className="mt-4" block>Submit</Button>
           </Form>
         </Col>
       </Row>

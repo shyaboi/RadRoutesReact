@@ -12,7 +12,6 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 import logo from "../../assets/images/rr.png";
-import fetchy from "../../Utils/Fetcher";
 import Navi from "../../Components/Nav/Nav";
 
 let enc
@@ -103,8 +102,11 @@ const Home = (props) => {
         <Form>
           <Row className="txt-cen">
             <Col>
-              <img src={logo} alt="rad routes logo"
-                height="350px" />
+              <img
+             className='img-fluid'
+             width='40%'
+               src={logo} alt="rad routes logo"
+                />
             </Col>
           </Row>
           <Row className="txt-cen" xl="2" xs="1">

@@ -92,6 +92,7 @@ const Navi = (props) => {
               height='60px'
               width='65px'
               className='rndNav shad'
+              
             />
           </NavLink>
           <NavbarBrand className='ml-4 brand' href='/Profile'>

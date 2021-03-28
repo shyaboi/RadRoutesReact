@@ -144,14 +144,14 @@ function Home() {
             </Row>
             <Row>
               <Col>
-                <Button className='p-3  m-4' color='primary' onClick={logout}>
+                <Button className='p-3  m-4' color='primaryGrad' onClick={logout}>
                   Logout
                 </Button>
               </Col>
               <Col>
                 <Button
                   className='p-3  mt-4'
-                  color='primaryGrad'
+                  color='primary'
                   onClick={updater}
                 >
                   Update Profile
