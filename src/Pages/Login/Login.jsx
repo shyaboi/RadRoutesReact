@@ -58,7 +58,11 @@ const Login = (props) => {
         <Row className="mt-4">
           <Col id="logo">
             <NavLink href='/'>
-            <img src={logo} alt="rad routes logo" height='350px' />
+            <img
+             className='img-fluid'
+             width='40%'
+               src={logo} alt="rad routes logo"
+                />
             </NavLink>
           </Col>
         </Row>
@@ -95,6 +99,7 @@ const Login = (props) => {
           </FormGroup>
           <Button className='mt-4'
             onClick={postForm}
+            block
             >
               Submit
             </Button>

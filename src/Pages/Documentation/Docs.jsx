@@ -9,7 +9,11 @@ const Docs = (props) => {
       <Row className='txt-cen'>
         <Col>
           <NavLink href='/'>
-            <img src={logo} alt='rad routes logo' height='350px' />
+          <img
+             className='img-fluid'
+             width='80%'
+               src={logo} alt="rad routes logo"
+                />
           </NavLink>
           Docs Coming Soon
         </Col>
