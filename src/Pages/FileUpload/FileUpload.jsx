@@ -41,7 +41,7 @@ const Home = (props) => {
   };
 
   const ok = (rr) => {
-    axios.get(`https://radroute.run/${rr}`)
+    axios.get(`https://radroute.run/exists/${rr}`)
     .then(function (data) {
       console.log(data);
       let d = data;
