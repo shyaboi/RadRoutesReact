@@ -60,7 +60,7 @@ function Peep() {
           </CardTitle>
           <CardImg
             top
-            className='rndNav img-fluid mx-auto shad profPic'
+            className='rndNav img-fluid mx-auto shad peepPic'
             src={userObj.avatar}
             alt='Card image cap'
             width='50%'
@@ -82,7 +82,7 @@ function Peep() {
             </CardTitle>
           <CardImg
             top
-            className='rndNav img-fluid mx-auto shad profPic'
+            className='rndNav img-fluid mx-auto shad peepPic'
             src='https://cdn.drawception.com/images/panels/2018/1-1/xNgFE4yjtw-2.png'
             alt='Card image cap'
             width='50%'
@@ -97,7 +97,7 @@ function Peep() {
             </CardTitle>
             <CardImg
               top
-              className='rndNav img-fluid mx-auto shad profPic'
+              className='rndNav img-fluid mx-auto shad peepPic'
               src='https://develop.spacemacs.org/layers/+lang/ruby/img/ruby.png'
               alt='Card image cap'
               width='50%'
@@ -112,7 +112,7 @@ function Peep() {
             </CardTitle>
           <CardImg
             top
-            className='rndNav img-fluid mx-auto shad profPic'
+            className='rndNav img-fluid mx-auto shad peepPic'
             src='https://www.clipartmax.com/png/small/89-894960_js-discord-bot-logo-node-js-and-react-js.png'
             alt='Card image cap'
             width='50%'
@@ -137,17 +137,16 @@ function Peep() {
           <h1>Peep other users code and routes</h1>
         </Col>
       </Row>
-      <Row xs='1'>
+      <Row md='1' xs ='1' xl='1'>
         {allRoutes.map((fl) => {
           return (
-            <Row className='p-5 mt-3 '>
-              <Card body>
-                <Row className='txt-cen mr-5 ml-5 mt-5'>
+              <Card body  className='p-3 m-3'>
+                <Row className='txt-cen mr-5 ml-5 mt-5' xs='1' md='2'>
                   {renderAvatar(fl.user_id)}
                   <Col>
                     <CardTitle>Language:</CardTitle>
                     <hr />
-                    <CardText>{renderLang(fl.ext)}</CardText>
+                    {renderLang(fl.ext)}
                   </Col>
                 </Row>
                 <CardBody>
@@ -189,7 +188,6 @@ function Peep() {
                   </Row>
                 </CardBody>
               </Card>
-            </Row>
           );
         })}
       </Row>
