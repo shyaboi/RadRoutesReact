@@ -24,7 +24,11 @@ const Splash = (props) => {
       <Container>
         <Row className='mt-4'>
           <Col id='logo'>
-            <img src={logo} alt='rad routes logo' height='350px' />
+          <img
+             className='img-fluid'
+             width='40%'
+               src={logo} alt="rad routes logo"
+                />
           </Col>
         </Row>
         <Row>
