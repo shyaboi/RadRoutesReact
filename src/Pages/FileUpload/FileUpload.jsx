@@ -41,8 +41,8 @@ const Home = (props) => {
   };
 
   const ok = (rr) => {
-
-    fetchy(`http://radroute.run/exists/${rr}`).then(async (data) => {
+    axios.get(`http://radroute.run/${rr}`)
+    .then(function (data) {
       console.log(data);
       let d = data;
       if (d === false) {
