@@ -35,7 +35,7 @@ const Register = (props) => {
         <Col>
           <Form
             method="POST"
-            action="http://radroute.run/register"
+            action="https://radroute.run/register"
             encType="multipart/form-data"
           >
             <FormGroup className="mr-sm-2 mb-sm-0 sec">
