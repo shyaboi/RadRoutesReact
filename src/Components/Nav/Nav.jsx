@@ -62,24 +62,24 @@ const Navi = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='mr-auto ' navbar>
-            <NavItem className='border border-primary'>
+            <NavItem className='border border-primary ml-3'>
               <NavLink href='/Home'>
                 <strong>Home</strong>
               </NavLink>
             </NavItem>
-            <NavItem className='border border-primaryGrad'>
+            <NavItem className='border border-primaryGrad ml-3'>
               <NavLink href='/Editor'>
                 <strong>Editor</strong>
               </NavLink>
             </NavItem>
 
-            <NavItem className='border border-secondary'>
+            <NavItem className='border border-secondary ml-3'>
               <NavLink href='/FileUpload'>
                 <strong>Upload a File</strong>
               </NavLink>
             </NavItem>
 
-            <NavItem className='border border-secondaryGrad'>
+            <NavItem className='border border-secondaryGrad ml-3'>
               <NavLink href='/Peep'>
                 <strong>Peep Code</strong>
               </NavLink>

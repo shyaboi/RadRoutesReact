@@ -183,3 +183,20 @@ box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
     width:  5rem;
   }
 }
+.peepPic{
+  height: 12rem;
+  width: 12rem;
+}
+@media only screen and (max-width: 900px) {
+  .peepPic {
+    height: 7rem;
+    width: 7rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .peepPic {
+    height: 3rem;
+    width:  3rem;
+  }
+}
