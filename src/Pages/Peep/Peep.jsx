@@ -77,21 +77,25 @@ function Peep() {
       case "py":
         return (
           <Col>
-          <CardTitle>
+            <CardTitle>Language:</CardTitle>
+            <hr />
+            <CardTitle>
               <strong>Python</strong>
             </CardTitle>
-          <CardImg
-            top
-            className='rndNav img-fluid mx-auto shad peepPic'
-            src='https://cdn.drawception.com/images/panels/2018/1-1/xNgFE4yjtw-2.png'
-            alt='Card image cap'
-            width='50%'
-          />
+            <CardImg
+              top
+              className='rndNav img-fluid mx-auto shad peepPic'
+              src='https://cdn.drawception.com/images/panels/2018/1-1/xNgFE4yjtw-2.png'
+              alt='Card image cap'
+              width='50%'
+            />
           </Col>
         );
       case "rb":
         return (
           <Col>
+            <CardTitle>Language:</CardTitle>
+            <hr />
             <CardTitle>
               <strong>Ruby</strong>
             </CardTitle>
@@ -107,16 +111,18 @@ function Peep() {
       case "js":
         return (
           <Col>
-          <CardTitle>
+            <CardTitle>Language:</CardTitle>
+            <hr />
+            <CardTitle>
               <strong>Node.JS</strong>
             </CardTitle>
-          <CardImg
-            top
-            className='rndNav img-fluid mx-auto shad peepPic'
-            src='https://www.clipartmax.com/png/small/89-894960_js-discord-bot-logo-node-js-and-react-js.png'
-            alt='Card image cap'
-            width='50%'
-          />
+            <CardImg
+              top
+              className='rndNav img-fluid mx-auto shad peepPic'
+              src='https://www.clipartmax.com/png/small/89-894960_js-discord-bot-logo-node-js-and-react-js.png'
+              alt='Card image cap'
+              width='50%'
+            />
           </Col>
         );
       default:
@@ -137,57 +143,43 @@ function Peep() {
           <h1>Peep other users code and routes</h1>
         </Col>
       </Row>
-      <Row md='1' xs ='1' xl='1'>
+      <Row md='1' className='txt-cen'>
         {allRoutes.map((fl) => {
           return (
-              <Card body  className='p-3 m-3'>
-                <Row className='txt-cen mr-5 ml-5 mt-5' xs='1' md='2'>
-                  {renderAvatar(fl.user_id)}
-                  <Col>
-                    <CardTitle>Language:</CardTitle>
-                    <hr />
-                    {renderLang(fl.ext)}
-                  </Col>
-                </Row>
+            <Col>
+              <Card body className='p-2 m-2'>
                 <CardBody>
-                  <Row>
-                    <Col>
-                      <strong>Route:</strong>
-                      <strong>
-                        <a href={"https://radroute.run/files/" + fl.route_name}>
-                          <CardHeader className='raddGrad p-3 rounded-pill'>
-                            https://RadRoute.run/files/{fl.route_name}
-                          </CardHeader>
-                        </a>
-                      </strong>
-                      <CardTitle tag='h5'> </CardTitle>
-                      <hr />
-                    </Col>
-                  </Row>
+                  <CardHeader>
+                    <Row>
+                      {renderAvatar(fl.user_id)}
 
-                  <Row>
-                    <Col>
-                      <CardTitle className='routesGrad rounded-pill p-2'>
-                        <strong>Code</strong>
-                      </CardTitle>
-                      <CardText onClick={tronk}>
-                        <p className={trunx}>
-                          <CodeBlock codeString={`${fl.pFile}`} />
-                        </p>
-                      </CardText>
-                    </Col>
-                  </Row>
+                      {renderLang(fl.ext)}
+                    </Row>
+                  </CardHeader>
+                  <strong>Route:</strong>
+                  <strong>
+                    <a href={"https://radroute.run/files/" + fl.route_name}>
+                      <CardHeader className='raddGrad p-3 rounded-pill'>
+                        https://RadRoute.run/files/{fl.route_name}
+                      </CardHeader>
+                    </a>
+                  </strong>
+                  <CardTitle tag='h5'> </CardTitle>
+                  <hr />
+                  <CardTitle className='routesGrad rounded-pill p-2'>
+                    <strong>Code</strong>
+                  </CardTitle>
+                  <CardText onClick={tronk}>
+                    <CodeBlock codeString={`${fl.pFile}`} />
+                  </CardText>
 
                   <hr />
 
-                  <Row className='shad '>
-                    <Col>
-                      <CardTitle>Run Code with Rad Routes Runner :</CardTitle>
-                      <CodeBlock codeString={`rr -r ${fl.route_name}`} />
-                    </Col>
-                  </Row>
+                  <CardTitle>Run Code with Rad Routes Runner :</CardTitle>
+                  <CodeBlock codeString={`rr -r ${fl.route_name}`} />
                 </CardBody>
               </Card>
+            </Col>
           );
         })}
       </Row>

@@ -66,31 +66,31 @@ function Home() {
         </Row>
         <Row>
           <Col className='shad m-4 p-4'>
+          <NavLink href='/Editor'>
+              <Button className='shad  p-4' color='primary'>
             Write A Rad Route with the Rad Route editor.
-            <hr />
-            <NavLink href='/Editor'>
-              <Button color='primary'>Launch</Button>
+            </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
+          <NavLink href='/FileUpload'>
+              <Button className='shad  p-4' color='primaryGrad'>
             Make a Rad Route by uploading a file.
-            <hr />
-            <NavLink href='/FileUpload'>
-              <Button color='primaryGrad'>Launch</Button>
+           </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
+          <NavLink href='/Peep'>
+              <Button className='shad  p-4' color='secondary'>
             Give feedback, and vote on other Rad Routes.
-            <hr />
-            <NavLink href='/Peep'>
-              <Button color='secondary'>Launch</Button>
+            </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
+          <NavLink href='/Profile'>
+              <Button className='shad  p-4' color='secondaryGrad'>
             Customize and edit your Rad Routes, and profile.
-            <hr />
-            <NavLink href='/Profile'>
-              <Button color='secondaryGrad'>Launch</Button>
+            </Button>
             </NavLink>
           </Col>
         </Row>
