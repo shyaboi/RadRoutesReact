@@ -161,14 +161,15 @@ function Editor() {
         enc: localStorage.getItem("enc"),
       });
       axios
-        .post("https://radroute.run/efile", bod, {})
+        .post("https://radroute.run/efile", bod)
         .then(function (response) {
           let rData = response;
           console.log(rData);
           localStorage.removeItem("enc");
           localStorage.removeItem("Funk");
           localStorage.setItem("enc", rData.data);
-          alert("Your file has been uploaded to Rad Routes!");
+          alert(`File Uploaded\nCheck your profile, or peep some code`)
+
         });
     }
     if (avail === "notAvail") {

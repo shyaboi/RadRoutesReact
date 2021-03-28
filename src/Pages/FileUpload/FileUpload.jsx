@@ -75,9 +75,9 @@ const Home = (props) => {
       }
     }).then(function (response) {
       let rData = response
-      console.log()
       localStorage.removeItem('enc')
       localStorage.setItem('enc', rData.data)
+      alert(`File Uploaded\nCheck your profile, or peep some code`)
     })
   
   }if (avail==='notAvail') {
