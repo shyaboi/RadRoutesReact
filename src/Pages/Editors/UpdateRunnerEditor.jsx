@@ -39,6 +39,7 @@ import fetchy from "../../Utils/Fetcher";
 // ssetup the editor function for the component
 function Editor(props) {
   let { rt, fnk, rtid, langy } = props;
+  console.log(fnk)
   let switchLangy = (l) => {
     switch (l) {
       case "py":
@@ -144,6 +145,7 @@ function Editor(props) {
       setLang(lan);
       setFunk(fun);
     } else {
+      setFunk(fnk);
       setthemeState("terminal");
       setthemeText("Termial");
       setfontSize(44);
@@ -204,7 +206,7 @@ function Editor(props) {
         ext: shortLang,
         enc: localStorage.getItem("enc"),
       });
-      axios.post("https://radroute.run/udr", bod).then(function (response) {
+      axios.post("http://localhost:5000/udr", bod).then(function (response) {
         let rData = response;
         console.log(rData);
         localStorage.removeItem("enc");
