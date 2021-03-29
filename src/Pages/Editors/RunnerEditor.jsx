@@ -79,11 +79,29 @@ function Editor() {
 
   const [avail, setAvail] = useState("avail");
   const [routeExists, setExitance] = useState("Availible");
-
+  
   //END Post states--------------------------------------------------------------------------------------------
+  
+  //window size states--------------------------------------------------------------------------------------------
+  
+  const [width, setWidth] = useState(window.innerWidth);
+const [height, setHeight] = useState(window.innerHeight);
+  //ENDwindow size states--------------------------------------------------------------------------------------------
 
+  let windowSize =()=> {
+    let x = window.innerHeight - 450
+    setWidth(window.innerWidth)
+    setHeight(x)
+    console.log(width, window.innerHeight)
+    
+  }
+  
+  window.addEventListener('resize', windowSize)
+  
   //setup use effect
   useEffect(() => {
+    setHeight(window.innerHeight-450)
+    setWidth(window.innerWidth)
     //if the theme is saved in local storage, then get items and set
     if (localStorage.getItem("currentTheme")) {
       let theme = localStorage.getItem("currentTheme");
@@ -138,7 +156,21 @@ function Editor() {
   //setting up the submit function for the post
 
   const onSubmit = async () => {
-    if (avail === "avail") {
+    console.log('benis')
+    if (avail === "notAvail") {
+      alert(`Please choose another route, \n ${route} is taken`);
+      return `Please choose another route, \n ${route} is taken`;
+      
+    }
+    else if (route === "") {
+
+      alert(
+        "Please enter a valid route. \n Your route field is currently blank"
+      );
+      return;
+    }
+    else if (avail === "avail") {
+
       console.log(lang)
       let shortLang = lang
       switch (shortLang) {
@@ -172,16 +204,7 @@ function Editor() {
 
         });
     }
-    if (avail === "notAvail") {
-      alert(`Please choose another route, \n ${route} is taken`);
-      return;
-    }
-    if (route === "") {
-      alert(
-        "Please enter a valid route. \n Your route field is currently blank"
-      );
-      return;
-    }
+    
   };
 
   //change theme funtion
@@ -256,7 +279,6 @@ function Editor() {
             </Label>
           </Col>
         </Row>
-        <Form onSubmit={onSubmit}>
           <FormGroup className='m-1 ninja'>
             <Row>
               <Col>
@@ -395,7 +417,7 @@ function Editor() {
             </Dropdown>
             <Dropdown isOpen={dropdownLangOpen} toggle={toggleLang}>
               <DropdownToggle caret color='secondaryGrad' className='m-1 ninja'>
-                {lang.charAt(0).toUpperCase() + lang.slice(1)}
+                {lang}
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Set The Language</DropdownItem>
@@ -415,10 +437,9 @@ function Editor() {
             </Dropdown>
           </Row>
           <Row>
-            <Col>
               <AceEditor
-                height='50vh'
-                width='60vw'
+                height={`${height}px`}
+                width={`${width}px`}
                 mode={lang}
                 theme={themeState}
                 fontSize={parseInt(fontSize)}
@@ -432,17 +453,15 @@ function Editor() {
                 name='funktion'
                 showGutter={true}
               />
-            </Col>
           </Row>
           <hr></hr>
           <Row id='submitRow'>
             <Col>
-              <Button type='submit' color='primary'>
+              <Button color='primary' onClick={onSubmit}>
                 Submit
               </Button>
             </Col>
           </Row>
-        </Form>
       </Container>
     </Container>
   );
