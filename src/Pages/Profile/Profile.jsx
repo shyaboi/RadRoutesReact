@@ -11,6 +11,8 @@ import {
   CardSubtitle,
   Button,
   Input,
+  CardHeader,
+  NavLink,
 } from "reactstrap";
 import Navi from "../../Components/Nav/Nav";
 import jwt_decode from "jwt-decode";
@@ -73,19 +75,71 @@ function Home() {
     });
     axios.post("https://radroute.run/udp", bod).then(function (response) {
       let rData = response;
-      localStorage.removeItem('enc')
-      localStorage.setItem('enc', rData.data)
-      jwtEnigma()
-      alert("Profile Updated!")
+      localStorage.removeItem("enc");
+      localStorage.setItem("enc", rData.data);
+      jwtEnigma();
+      alert("Profile Updated!");
     });
   };
 
+  let renderLang = (e) => {
+    switch (e) {
+      case "py":
+        return (
+          <div className=''>
+            <CardTitle>Language:</CardTitle>
+            <CardTitle>
+              <strong>Python</strong>
+            </CardTitle>
+            <CardImg
+              className='rndNav img-fluid mx-auto shad profLangPic'
+              src='https://cdn.drawception.com/images/panels/2018/1-1/xNgFE4yjtw-2.png'
+              alt='Card image cap'
+              width='50%'
+            />
+          </div>
+        );
+      case "rb":
+        return (
+          <div className=''>
+            <CardTitle>Language:</CardTitle>
+            <CardTitle>
+              <strong>Ruby</strong>
+            </CardTitle>
+            <CardImg
+              className='rndNav img-fluid mx-auto shad profLangPic'
+              src='https://develop.spacemacs.org/layers/+lang/ruby/img/ruby.png'
+              alt='Card image cap'
+              width='50%'
+            />
+          </div>
+        );
+      case "js":
+        return (
+          <div className=''>
+            <CardTitle>Language:</CardTitle>
+            <CardTitle>
+              <strong>Node.JS</strong>
+            </CardTitle>
+            <CardImg
+              className='rndNav img-fluid mx-auto shad profLangPic'
+              src='https://www.clipartmax.com/png/small/89-894960_js-discord-bot-logo-node-js-and-react-js.png'
+              alt='Card image cap'
+              width='50%'
+            />
+          </div>
+        );
+      default:
+        break;
+    }
+  };
+
   return (
-    <Container>
+    <Container fluid>
       <Container>
         <Navi />
       </Container>
-      <Container className='mt-5 pt-5 txt-cen'>
+      <Container className='mt-5 pt-5 txt-cen' fluid>
         <Card>
           <Row>
             <Col>
@@ -144,52 +198,70 @@ function Home() {
             </Row>
             <Row>
               <Col>
-                <Button className='p-3  m-4' color='primaryGrad' onClick={logout}>
+                <Button
+                  className='p-3  m-4'
+                  color='primaryGrad'
+                  onClick={logout}
+                >
                   Logout
                 </Button>
               </Col>
               <Col>
-                <Button
-                  className='p-3  mt-4'
-                  color='primary'
-                  onClick={updater}
-                >
+                <Button className='p-3  mt-4' color='primary' onClick={updater}>
                   Update Profile
                 </Button>
               </Col>
             </Row>
 
             <Row>
-              <Col>Active Routes:</Col>
+              <Col>
+                <h1>Your Active Routes:</h1>
+              </Col>
             </Row>
-            <Row md='1' xl='2'>
-              {routes.map((fl) => {
-                return (
-                  <Col>
-                    <Card>
-                      <CardTitle>Hosted At:</CardTitle>
-                      <CardTitle tag='h3' className='shad p-2 m-2'>
-                        <a href={`https://radroute.run/${fl.route_name}`}>
-                          RadRoute.run/{fl.route_name}
-                        </a>
-                      </CardTitle>
-                      <CardTitle>Raw Code:</CardTitle>
-                      <CardText className='m-2'>{fl.pFile}</CardText>
-                      <CardText className='shad m-2'>
-                        File Type: {fl.ext}
-                      </CardText>
-                      <Button color='secondary mb-2 mr-3 ml-3'>Download</Button>
-                      <Row>
-                    <Col>
-                    <CodeBlock
-                    codeString={`rr -r ${fl.route_name}`}/>
+            <Container>
+              <Row md='1' xl='1'>
+                {routes.map((fl) => {
+                  return (
+                    <Col className='mt-3'>
+                      <Card className='p-3'>
+                        <CardBody>
+                          <CardHeader>
+                            <Row xs='1' xl='2'>
+                              <Col>
+                                <CardTitle>Hosted At:</CardTitle>
+                                <CardTitle tag='h3' className='p-2 m-2'>
+                                  <a
+                                    href={`https://radroute.run/files/${fl.route_name}`}
+                                  >
+                                    RadRoute.run/files/
+                                    {fl.route_name}
+                                  </a>
+                                </CardTitle>
+                              </Col>
+                              <Col>{renderLang(fl.ext)}</Col>
+                            </Row>
+                          </CardHeader>
+                          <Col className='shad mt-3 p-3'>
+                            <CardTitle>Raw Code:</CardTitle>
+                            <CardText className='m-2'>
+                              {" "}
+                              <CodeBlock codeString={`${fl.pFile}`} />
+                            </CardText>
+                            <NavLink href='/ProfileEditor'>
+                              <Button color='secondary' block>
+                                Edit Code
+                              </Button>
+                            </NavLink>
+                            Run with Rad Routes Runner :
+                            <CodeBlock codeString={`rr -r ${fl.route_name}`} />
+                          </Col>
+                        </CardBody>
+                      </Card>
                     </Col>
-                      </Row>
-                    </Card>
-                  </Col>
-                );
-              })}
-            </Row>
+                  );
+                })}
+              </Row>
+            </Container>
           </CardBody>
         </Card>
       </Container>
