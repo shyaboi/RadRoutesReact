@@ -76,6 +76,8 @@ const Home = (props) => {
       let rData = response
       localStorage.removeItem('enc')
       localStorage.setItem('enc', rData.data)
+      setFile('')
+      setRoute('')
       alert(`File Uploaded\nCheck your profile, or peep some code`)
     })
   

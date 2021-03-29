@@ -150,6 +150,7 @@ function Peep() {
               <Card body className='p-2 m-2'>
                 <CardBody>
                   <CardHeader>
+                  <CardTitle>Uploaded on: {fl.date_time_uploaded}</CardTitle>
                     <Row>
                       {renderAvatar(fl.user_id)}
 

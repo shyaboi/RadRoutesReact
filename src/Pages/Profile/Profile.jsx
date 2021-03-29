@@ -15,6 +15,7 @@ import {
   NavLink,
 } from "reactstrap";
 import Navi from "../../Components/Nav/Nav";
+import UpdateModal from '../../Components/Modals/UpdateCodeModal'
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -212,58 +213,53 @@ function Home() {
                 </Button>
               </Col>
             </Row>
-
-            <Row>
-              <Col>
-                <h1>Your Active Routes:</h1>
-              </Col>
-            </Row>
-            <Container>
-              <Row md='1' xl='1'>
-                {routes.map((fl) => {
-                  return (
-                    <Col className='mt-3'>
-                      <Card className='p-3'>
-                        <CardBody>
-                          <CardHeader>
-                            <Row xs='1' xl='2'>
-                              <Col>
-                                <CardTitle>Hosted At:</CardTitle>
-                                <CardTitle tag='h3' className='p-2 m-2'>
-                                  <a
-                                    href={`https://radroute.run/files/${fl.route_name}`}
-                                  >
-                                    RadRoute.run/files/
-                                    {fl.route_name}
-                                  </a>
-                                </CardTitle>
-                              </Col>
-                              <Col>{renderLang(fl.ext)}</Col>
-                            </Row>
-                          </CardHeader>
-                          <Col className='shad mt-3 p-3'>
-                            <CardTitle>Raw Code:</CardTitle>
-                            <CardText className='m-2'>
-                              {" "}
-                              <CodeBlock codeString={`${fl.pFile}`} />
-                            </CardText>
-                            <NavLink href='/ProfileEditor'>
-                              <Button color='secondary' block>
-                                Edit Code
-                              </Button>
-                            </NavLink>
-                            Run with Rad Routes Runner :
-                            <CodeBlock codeString={`rr -r ${fl.route_name}`} />
-                          </Col>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                  );
-                })}
-              </Row>
-            </Container>
           </CardBody>
         </Card>
+      </Container>
+      <Container fluid>
+        <Row className='mt-3 shad p-1'>
+          <Col>
+            <h1>Your Active Routes</h1>
+          </Col>
+        </Row>
+        <Row md='1' xl='1'>
+          {routes.map((fl) => {
+            return (
+              <Col className='mt-3 txt-cen'>
+                <Card className='p-3'>
+                  <CardBody>
+                    <CardHeader>
+                      <Row xs='1' xl='2'>
+                        <Col>
+                          <CardTitle>Hosted At:</CardTitle>
+                          <CardTitle tag='h3' className='p-2 m-2'>
+                            <a
+                              href={`https://radroute.run/files/${fl.route_name}`}
+                            >
+                              RadRoute.run/files/
+                              {fl.route_name}
+                            </a>
+                          </CardTitle>
+                        </Col>
+                        <Col>{renderLang(fl.ext)}</Col>
+                      </Row>
+                    </CardHeader>
+                    <Col className='shad mt-3 p-3'>
+                      <CardTitle>Raw Code:</CardTitle>
+                      <CardText className='m-2'>
+                        {" "}
+                        <CodeBlock codeString={`${fl.pFile}`} />
+                      </CardText>
+                      <UpdateModal buttonLabel="Edit Code" route={fl.route_name} funk={fl.pFile} rtid={fl.route_id} langy={fl.ext}/>
+                      Run with Rad Routes Runner :
+                      <CodeBlock codeString={`rr -r ${fl.route_name}`} />
+                    </Col>
+                  </CardBody>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
       </Container>
     </Container>
   );
