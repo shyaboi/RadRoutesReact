@@ -193,6 +193,8 @@ function Editor(props) {
         console.log(rData);
         localStorage.removeItem("enc");
         localStorage.setItem("enc", rData.data);
+        localStorage.removeItem("Funk");
+
         alert(
           `Updated your R.A.D. Route\nRefresh your profile, or peep some code`
         );
@@ -211,6 +213,7 @@ function Editor(props) {
         console.log(rData);
         localStorage.removeItem("enc");
         localStorage.setItem("enc", rData.data);
+        localStorage.removeItem("Funk");
         alert(
           `Updated your R.A.D. Route\nRefresh your profile, or peep some code`
         );
