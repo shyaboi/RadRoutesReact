@@ -130,7 +130,7 @@ const [height, setHeight] = useState(window.innerHeight);
       setfontSize(44);
       setWrapState(true);
       setWrapStateText("Enabled");
-      setLang("Python");
+      setLang("python");
     }
   }, []);
   const routeChange = (e) => {
@@ -417,7 +417,7 @@ const [height, setHeight] = useState(window.innerHeight);
             </Dropdown>
             <Dropdown isOpen={dropdownLangOpen} toggle={toggleLang}>
               <DropdownToggle caret color='secondaryGrad' className='m-1 ninja'>
-                {lang}
+                {lang.charAt(0).toUpperCase() + lang.slice(1)}
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Set The Language</DropdownItem>
