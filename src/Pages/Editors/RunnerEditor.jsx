@@ -200,8 +200,9 @@ const [height, setHeight] = useState(window.innerHeight);
           localStorage.removeItem("enc");
           localStorage.removeItem("Funk");
           localStorage.setItem("enc", rData.data);
+          setFunk('')
+          setRoute('')
           alert(`File Uploaded\nCheck your profile, or peep some code`)
-
         });
     }
     
