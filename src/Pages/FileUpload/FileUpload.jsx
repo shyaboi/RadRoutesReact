@@ -43,7 +43,7 @@ const Home = (props) => {
     axios.get(`https://radroute.run/exists/${rr}`)
     .then(function (data) {
       console.log(data);
-      let d = data;
+      let d = data.data;
       if (d === false) {
         setExitance("Route Availible");
         setAvail("avail");
@@ -99,7 +99,6 @@ const Home = (props) => {
         <Navi />
       </Container>
       <Container className="pb-5 mt-5 pt-5 txt-cen ninja">
-        <Form>
           <Row className="txt-cen">
             <Col>
               <img
@@ -153,7 +152,6 @@ const Home = (props) => {
               </Button>
             </Col>
           </Row>
-        </Form>
       </Container>
     </Container>
   );
