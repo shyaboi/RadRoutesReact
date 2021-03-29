@@ -137,11 +137,11 @@ function Home() {
 
   return (
     <Container fluid>
-      <Container>
+      <Container >
         <Navi />
       </Container>
       <Container className='mt-5 pt-5 txt-cen' fluid>
-        <Card>
+        <Card >
           <Row>
             <Col>
               <CardImg
@@ -217,7 +217,7 @@ function Home() {
         </Card>
       </Container>
       <Container fluid>
-        <Row className='mt-3 shad p-1'>
+        <Row className='shad radGrad mt-4 p-1 txt-cen rounded-pill stok'>
           <Col>
             <h1>Your Active Routes</h1>
           </Col>
@@ -226,13 +226,13 @@ function Home() {
           {routes.map((fl) => {
             return (
               <Col className='mt-3 txt-cen'>
-                <Card className='p-3'>
+                <Card className=''>
                   <CardBody>
                     <CardHeader>
                       <Row xs='1' xl='2'>
                         <Col>
                           <CardTitle>Hosted At:</CardTitle>
-                          <CardTitle tag='h3' className='p-2 m-2'>
+                          <CardTitle tag='h3' className=''>
                             <a
                               href={`https://radroute.run/files/${fl.route_name}`}
                             >
