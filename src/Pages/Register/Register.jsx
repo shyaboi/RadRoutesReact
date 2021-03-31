@@ -87,3 +87,7 @@ const Register = (props) => {
   );
 };
 export default Register;
+
+setTimeout(() => {
+  
+}, 4000);
