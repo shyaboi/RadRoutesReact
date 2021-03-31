@@ -62,9 +62,9 @@ const Splash = (props) => {
               </NavLink>
             </Fade>
             <Fade>
-            <NavLink href='/Documentation'>
+            <NavLink href='/Downloads'>
               <Button className='m-2 p-3' size='lg' color='secondaryGrad'  block>
-                Contact
+                Downloads
               </Button>
             </NavLink>
             </Fade>
