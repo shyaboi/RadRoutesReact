@@ -84,6 +84,13 @@ const Navi = (props) => {
                 <strong>Peep Code</strong>
               </NavLink>
             </NavItem>
+           
+           
+            <NavItem className='border border-primary ml-3'>
+              <NavLink href='/Downloads'>
+                <strong>Downloads</strong>
+              </NavLink>
+            </NavItem>
           </Nav>
           <NavLink href='/Profile'>
             <img

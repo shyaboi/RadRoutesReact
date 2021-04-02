@@ -139,7 +139,7 @@ function Peep() {
       <br />
       <br />
       <Row className='mt-5'>
-        <Col className='shad radGrad p-3 txt-cen rounded-pill stok'>
+        <Col className='shad radGrad p-1 mb-3 txt-cen rounded-pill stok'>
           <h1>Peep other users code and routes</h1>
         </Col>
       </Row>
