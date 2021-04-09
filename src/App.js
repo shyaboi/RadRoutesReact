@@ -10,6 +10,8 @@ import Profile from "./Pages/Profile/Profile.jsx";
 import Splash from "./Pages/Splash/Splash.jsx";
 import Documentation from "./Pages/Documentation/Docs.jsx";
 import Downloads from "./Pages/Downloads/Downloads.jsx";
+import RegiCheckEmail from "./Pages/RegiEmailCheck/RegiCheckEmail";
+import EmailVerified from "./Pages/EmailVerified/EmailVerified";
 import "./App.css";
 import {Container} from "reactstrap";
 
@@ -34,6 +36,8 @@ function App() {
           <Route path="/Editor" exact component={RunnerEditor} />
           <Route path="/Peep" exact component={Peep} />
           <Route path="/Register" exact component={Register} />
+          <Route path="/Register/EmailCheck" exact component={RegiCheckEmail} />
+          <Route path="/Register/EmailVerified" exact component={EmailVerified} />
         </Switch>
       </div>
     </Router>
