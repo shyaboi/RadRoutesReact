@@ -38,7 +38,7 @@ const Register = (props) => {
         <Col>
           <Form
             method="POST"
-            action="https://radroutes.com/register"
+            action="https://radroute.run/register"
             encType="multipart/form-data"
           >
             <FormGroup className="mr-sm-2 mb-sm-0 sec">
@@ -71,7 +71,7 @@ const Register = (props) => {
                 type="password"
                 name="password"
                 id="examplePassword"
-                placeholder="don't tell!"
+                placeholder="Password"
               />
             </FormGroup>
             <Button className="mt-4" block>Submit</Button>
