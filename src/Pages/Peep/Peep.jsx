@@ -9,6 +9,7 @@ import {
   CardTitle,
   CardHeader,
   CardImg,
+  Button
 } from "reactstrap";
 import Navi from "../../Components/Nav/Nav";
 import fetchy from "../../Utils/Fetcher";
@@ -20,15 +21,28 @@ function Peep() {
   const [trunx, setTrunx] = useState("");
   const [userD, setUserD] = useState("");
 
-  const data = async (props) => {
+  const data = async () => {
     fetchy("https://radroute.run/all").then(async (data) => {
       console.log(data.userTrunk);
       let rd = await data.allRoutes;
       let ud = await data.userTrunk;
-      setAllRoutes(rd);
+      
+      sortUpdated(rd)
       setUserD(ud);
     });
   };
+  
+ let sortUpdated = async (r)=> {
+  let datSort = await r.sort((a, b) => {
+    a = a.date_time_last_updated.split('/');
+    b = b.date_time_last_updated.split('/');
+    return a[2] - b[2] || a[1] - b[1] || a[0] - b[0];
+});
+
+setAllRoutes(datSort.reverse())
+
+ }
+
 
   useEffect(() => {
     data();
@@ -143,6 +157,7 @@ function Peep() {
           <h1>Peep other users code and routes</h1>
         </Col>
       </Row>
+     
       <Row md='1' className='txt-cen'>
         {allRoutes.map((fl) => {
           return (
