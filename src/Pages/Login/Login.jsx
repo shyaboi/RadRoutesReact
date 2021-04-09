@@ -29,7 +29,7 @@ const Login = (props) => {
         'email': email,
         'password': pass,
       })
-      axios.post('https://radroutes.com/login', bod)
+      axios.post('https://radroute.run/login', bod)
       .then(function (response) {
         let rData = response.data
         let authed = response.data.authed
