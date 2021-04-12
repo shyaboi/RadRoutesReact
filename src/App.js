@@ -8,7 +8,6 @@ import Peep from "./Pages/Peep/Peep";
 import Register from "./Pages/Register/Register.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
 import Splash from "./Pages/Splash/Splash.jsx";
-import Documentation from "./Pages/Documentation/Docs.jsx";
 import Downloads from "./Pages/Downloads/Downloads.jsx";
 import RegiCheckEmail from "./Pages/RegiEmailCheck/RegiCheckEmail";
 import EmailVerified from "./Pages/EmailVerified/EmailVerified";
@@ -28,7 +27,6 @@ function App() {
       <div>
         <Switch>
           <Route path="/FileUpload" exact component={FileUpload} />
-          <Route path="/Documentation" exact component={Documentation} />
           <Route path="/Downloads" exact component={Downloads} />
           <Route path="/Login" exact component={Login} />
           <Route path="/Home" exact component={Home} />
