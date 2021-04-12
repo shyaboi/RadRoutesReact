@@ -49,7 +49,7 @@ const Splash = (props) => {
                 </Button>
               </NavLink>
             </Fade>
-              <NavLink href='/Documentation'>
+              <NavLink href='https://tender-goodall-ad5f05.netlify.app/'>
                 <Button
                   className='m-2 p-3'
                   size='lg'
