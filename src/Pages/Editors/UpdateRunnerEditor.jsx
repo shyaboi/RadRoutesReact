@@ -39,7 +39,6 @@ import fetchy from "../../Utils/Fetcher";
 // ssetup the editor function for the component
 function Editor(props) {
   let { rt, fnk, rtid, langy } = props;
-  console.log(fnk)
   let switchLangy = (l) => {
     switch (l) {
       case "py":
@@ -112,7 +111,7 @@ function Editor(props) {
     let x = window.innerHeight - 450;
     setWidth(window.innerWidth);
     setHeight(x);
-    console.log(width, window.innerHeight);
+    // console.log(width, window.innerHeight);
   };
 
   window.addEventListener("resize", windowSize);
@@ -161,7 +160,6 @@ function Editor(props) {
   };
   const routeChecker = (rr) => {
     fetchy(`https://radroute.run/exists/${rr}`).then(async (data) => {
-      console.log(data);
       let d = data;
       if (d === false) {
         setExitance("Route Availible");
@@ -190,7 +188,6 @@ function Editor(props) {
       });
       axios.post("https://radroute.run/udr", bod).then(function (response) {
         let rData = response;
-        console.log(rData);
         localStorage.removeItem("enc");
         localStorage.setItem("enc", rData.data);
         localStorage.removeItem("Funk");
@@ -210,7 +207,6 @@ function Editor(props) {
       });
       axios.post("https://radroute.run/udr", bod).then(function (response) {
         let rData = response;
-        console.log(rData);
         localStorage.removeItem("enc");
         localStorage.setItem("enc", rData.data);
         localStorage.removeItem("Funk");
