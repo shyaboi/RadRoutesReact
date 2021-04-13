@@ -34,7 +34,7 @@ function Peep() {
   
  let sortUpdated = async (r)=> {
   let datSort = await r.sort((a, b) => {
-    if(!a.date_time_last_updated){
+    if(!a.date_time_last_updated||!b.date_time_last_updated){
       a=a.date_time_created
       b=b.date_time_created
     }
