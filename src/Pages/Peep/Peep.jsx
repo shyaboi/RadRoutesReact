@@ -34,8 +34,13 @@ function Peep() {
   
  let sortUpdated = async (r)=> {
   let datSort = await r.sort((a, b) => {
+    if(!a.date_time_last_updated){
+      a=a.date_time_created
+      b=b.date_time_created
+    }
+    else{
     a = a.date_time_last_updated.split('/');
-    b = b.date_time_last_updated.split('/');
+    b = b.date_time_last_updated.split('/');}
     return a[2] - b[2] || a[1] - b[1] || a[0] - b[0];
 });
 
