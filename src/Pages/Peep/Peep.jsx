@@ -23,7 +23,7 @@ function Peep() {
 
   const data = async () => {
     fetchy("https://radroute.run/all").then(async (data) => {
-      console.log(data.userTrunk);
+      // console.log(data.userTrunk);
       let rd = await data.allRoutes;
       let ud = await data.userTrunk;
       
@@ -55,14 +55,14 @@ setAllRoutes(datSort.reverse())
   }, []);
 
   const tronk = (e) => {
-    console.log(e.target.className);
+    // console.log(e.target.className);
     if (e.target.className === "trunc") {
       e.target.className = "notTrunc";
-      console.log(trunx);
+      // console.log(trunx);
     } else {
       e.target.className = "trunc";
       //   setTrunx('notTrunc');
-      console.log(trunx);
+      // console.log(trunx);
     }
   };
 

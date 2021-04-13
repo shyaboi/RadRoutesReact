@@ -92,7 +92,7 @@ const [height, setHeight] = useState(window.innerHeight);
     let x = window.innerHeight - 450
     setWidth(window.innerWidth)
     setHeight(x)
-    console.log(width, window.innerHeight)
+    // console.log(width, window.innerHeight)
     
   }
   
@@ -140,7 +140,6 @@ const [height, setHeight] = useState(window.innerHeight);
   };
   const routeChecker = (rr) => {
     fetchy(`https://radroute.run/exists/${rr}`).then(async (data) => {
-      console.log(data);
       let d = data;
       if (d === false) {
         setExitance("Route Availible");
@@ -156,7 +155,6 @@ const [height, setHeight] = useState(window.innerHeight);
   //setting up the submit function for the post
 
   const onSubmit = async () => {
-    console.log('benis')
     if (avail === "notAvail") {
       alert(`Please choose another route, \n ${route} is taken`);
       return `Please choose another route, \n ${route} is taken`;
@@ -171,7 +169,6 @@ const [height, setHeight] = useState(window.innerHeight);
     }
     else if (avail === "avail") {
 
-      console.log(lang)
       let shortLang = lang
       switch (shortLang) {
         case 'python':
@@ -196,7 +193,6 @@ const [height, setHeight] = useState(window.innerHeight);
         .post("https://radroute.run/efile", bod)
         .then(function (response) {
           let rData = response;
-          console.log(rData);
           localStorage.removeItem("enc");
           localStorage.removeItem("Funk");
           localStorage.setItem("enc", rData.data);

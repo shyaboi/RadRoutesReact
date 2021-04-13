@@ -36,13 +36,11 @@ const Home = (props) => {
     setType(popFile);
     let fil = e.target.files[0]
     setFile(fil)
-    console.log(fil)
   };
 
   const ok = (rr) => {
     axios.get(`https://radroute.run/exists/${rr}`)
     .then(function (data) {
-      console.log(data);
       let d = data.data;
       if (d === false) {
         setExitance("Route Availible");

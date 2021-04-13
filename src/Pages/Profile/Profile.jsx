@@ -41,7 +41,6 @@ function Home() {
         joined: decoded.joined,
         d: decoded.morD,
       };
-      console.log(decoded.joined);
       setUser(cleanDecoded);
       setRoutes(decoded.routes);
     } else {
@@ -52,7 +51,6 @@ function Home() {
   };
 
   const logout = () => {
-    console.log("ok");
     localStorage.removeItem("enc");
     alert(`Be Rad ${user.user}\n See you next time`);
     history.push("/");
@@ -63,8 +61,6 @@ function Home() {
   }, []);
 
   const updater = (e) => {
-    console.log(e.target);
-    console.log(email, userName, avatar);
     var emailCheck = email !== "" ? email : user.email;
     var userCheck = userName !== "" ? userName : user.user;
     var avaCheck = avatar !== "" ? avatar : user.avatar;

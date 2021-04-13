@@ -35,7 +35,7 @@ const Login = (props) => {
         let authed = response.data.authed
         let enc = response.data.enc
         if(authed=='1'){
-          console.log(authed,enc)
+          // console.log(authed,enc)
           localStorage.setItem('enc', enc)
 
           history.push("/Home");
