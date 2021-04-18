@@ -87,7 +87,7 @@ const Navi = (props) => {
            
            
             <NavItem className='border border-primary ml-3'>
-              <NavLink href='/Downloads'>
+              <NavLink href='https://docs.radroutes.com/Prerequisites'>
                 <strong>Downloads</strong>
               </NavLink>
             </NavItem>
