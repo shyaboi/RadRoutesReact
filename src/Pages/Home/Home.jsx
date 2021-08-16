@@ -71,28 +71,28 @@ function Home() {
           <Col className='shad m-4 p-4'>
           <NavLink href='/Editor'>
               <Button className='shad  p-4' color='primary'>
-           <BsCodeSlash />?
+           <BsCodeSlash />
             </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
           <NavLink href='/FileUpload'>
               <Button className='shad  p-4' color='primaryGrad'>
-              <BsCloudUpload/>?
+              <BsCloudUpload/>
            </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
           <NavLink href='/Peep'>
               <Button className='shad  p-4' color='secondary'>
-            <CgBrowse/>?
+            <CgBrowse/>
             </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
           <NavLink href='/Profile'>
               <Button className='shad  p-4' color='secondaryGrad'>
-            <FaEdit/>?
+            <FaEdit/>
             </Button>
             </NavLink>
           </Col>
