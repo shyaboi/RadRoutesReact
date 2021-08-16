@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import {BsCodeSlash, BsCloudUpload} from 'react-icons/bs'
+import {CgBrowse} from 'react-icons/cg'
+import {FaEdit} from 'react-icons/fa'
 import {
   Container,
   Row,
@@ -68,28 +71,28 @@ function Home() {
           <Col className='shad m-4 p-4'>
           <NavLink href='/Editor'>
               <Button className='shad  p-4' color='primary'>
-            Write A Rad Route with the Rad Route editor.
+           <BsCodeSlash />?
             </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
           <NavLink href='/FileUpload'>
               <Button className='shad  p-4' color='primaryGrad'>
-            Make a Rad Route by uploading a file.
+              <BsCloudUpload/>?
            </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
           <NavLink href='/Peep'>
               <Button className='shad  p-4' color='secondary'>
-            Give feedback, and vote on other Rad Routes.
+            <CgBrowse/>?
             </Button>
             </NavLink>
           </Col>
           <Col className='shad m-4 p-4'>
           <NavLink href='/Profile'>
               <Button className='shad  p-4' color='secondaryGrad'>
-            Customize and edit your Rad Routes, and profile.
+            <FaEdit/>?
             </Button>
             </NavLink>
           </Col>
