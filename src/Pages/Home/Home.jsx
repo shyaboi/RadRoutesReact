@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {BsCodeSlash, BsCloudUpload} from 'react-icons/bs'
 import {CgBrowse} from 'react-icons/cg'
-import {FaEdit} from 'react-icons/fa'
+import {FaCogs} from 'react-icons/fa'
 import {
   Container,
   Row,
   Col,
   Button,
-  FormGroup,
-  Label,
   CardImg,
   NavLink,
 } from "reactstrap";
@@ -50,7 +48,7 @@ function Home() {
         {/* Home Launcher */}
         <Row>
           <Col>
-            <h1>Welcome</h1>
+            <h1>R.A.D. User</h1>
             <h3>{user.user}</h3>
             <CardImg
                 top
@@ -92,7 +90,7 @@ function Home() {
           <Col className='shad m-4 p-2'>
           <NavLink href='/Profile'>
               <Button className='shad  p-4' color='secondaryGrad'>
-            <FaEdit class='iconz'/>
+            <FaCogs class='iconz'/>
             </Button>
             </NavLink>
           </Col>
