@@ -65,31 +65,31 @@ function Home() {
           </h3>
           </Col>
         </Row>
-        <Row>
-          <Col className='shad m-4 p-2'>
+        <Row className='pt-5'>
+          <Col className='m-1'>
           <NavLink href='/Editor'>
-              <Button className='shad  p-4' color='primary'>
+              <Button className='shad' color='primary'>
            <BsCodeSlash class='iconz' />
             </Button>
             </NavLink>
           </Col>
-          <Col className='shad m-4 p-2'>
+          <Col className='m-1'>
           <NavLink href='/FileUpload'>
-              <Button className='shad  p-4' color='primaryGrad'>
+              <Button className='shad' color='primaryGrad'>
               <BsCloudUpload class='iconz'/>
            </Button>
             </NavLink>
           </Col>
-          <Col className='shad m-4 p-2'>
+          <Col className='m-1'>
           <NavLink href='/Peep'>
-              <Button className='shad  p-4' color='secondary'>
+              <Button className='shad' color='secondary'>
             <CgBrowse class='iconz'/>
             </Button>
             </NavLink>
           </Col>
-          <Col className='shad m-4 p-2'>
+          <Col className='m-1'>
           <NavLink href='/Profile'>
-              <Button className='shad  p-4' color='secondaryGrad'>
+              <Button className='shad' color='secondaryGrad'>
             <FaCogs class='iconz'/>
             </Button>
             </NavLink>
