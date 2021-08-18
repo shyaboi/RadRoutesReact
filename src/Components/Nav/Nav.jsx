@@ -11,6 +11,7 @@ import {
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import rad from "../../assets/images/rad.png";
 import routes from "../../assets/images/routes.png";
+import benix from "../../assets/images/rad.png";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
@@ -43,6 +44,11 @@ const Navi = (props) => {
   }, []);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const changeThing = () =>{
+    console.log('hirrelr')
+  }
+
   return (
     <div>
       <Navbar
@@ -100,6 +106,7 @@ const Navi = (props) => {
           </Nav>
           <NavLink href='/Profile'>
             <img
+              onMouseEnter={changeThing}
               src={user.avatar}
               alt=''
               height='60px'
