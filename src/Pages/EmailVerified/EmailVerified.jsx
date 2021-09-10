@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
-const logo =process.env.PUBLIC_URL + "/images/radroutes.png";
+const logo =process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 
 
 
@@ -30,7 +30,7 @@ const sendVerification = ()=> {
 
 
   return (
-    <Container id="logoCon" className="txt-cen" fluid>
+    <Container id="logoCon" className="txt-cen">
       <Container>
 
         <Row className="mt-4">
