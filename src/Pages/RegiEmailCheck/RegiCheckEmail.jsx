@@ -9,10 +9,10 @@ import {
   Input,
   NavLink
 } from "reactstrap";
-import logo from "../../assets/images/radroutes.png";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
+const logo = process.env.PUBLIC_URL + "/assets/images/rad.png";
 
 
 

@@ -11,8 +11,9 @@ import {
   FormText,
 } from "reactstrap";
 import axios from 'axios';
-import logo from "../../assets/images/rr.png";
 import Navi from "../../Components/Nav/Nav";
+
+const logo = process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 
 let enc
 const Home = (props) => {

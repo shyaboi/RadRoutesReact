@@ -102,9 +102,10 @@ box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
 }
 
 #logoCon{
-  background-image: url('../assets/images/rrbg.jpg');
+  background: linear-gradient(180deg, #BE93C5 0%, #7bc6cc 100%);
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .notAvail{
