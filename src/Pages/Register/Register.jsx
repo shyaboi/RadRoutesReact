@@ -10,8 +10,8 @@ import {
   Input,
   NavLink,
 } from "reactstrap";
-import logo from "../../assets/images/radroutes.png";
 
+const logo = process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 
 const Register = (props) => {
 
@@ -20,7 +20,7 @@ const Register = (props) => {
 
   // const alerty = ()=> {alert('Thanks for signing up! \n You will be taken to the login page now.')}
   return (
-    <Container id="logoCon" className="txt-cen" fluid>
+    <Container id="logoCon" className="txt-cen shad">
       <Container>
         <Row className="mt-5">
           <Col id="logo">
@@ -46,6 +46,7 @@ const Register = (props) => {
                 <h4>User Name</h4>
               </Label>
               <Input
+              className='shad'
                 type="username"
                 name="username"
                 id="user"
@@ -57,6 +58,7 @@ const Register = (props) => {
                 <h4>Email</h4>
               </Label>
               <Input
+              className='shad'
                 type="email"
                 name="email"
                 id="Email"
@@ -68,13 +70,14 @@ const Register = (props) => {
                 <h4>Password</h4>
               </Label>
               <Input
+              className='shad'
                 type="password"
                 name="password"
                 id="examplePassword"
                 placeholder="Password"
               />
             </FormGroup>
-            <Button className="mt-4" block>Submit</Button>
+            <Button className="mt-5 shad" block>Submit</Button>
           </Form>
         </Col>
       </Row>

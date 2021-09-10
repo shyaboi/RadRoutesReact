@@ -20,7 +20,7 @@ function App() {
 
   return (
     <Router>
-      <Container fluid>
+      <Container fluid id="rootApp">
         <Route path="/" exact component={Splash} />
 
       </Container>

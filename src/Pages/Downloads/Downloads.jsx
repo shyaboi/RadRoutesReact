@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, NavLink,Button, Row, Col } from "reactstrap";
 import CodeBlock from "@tenon-io/tenon-codeblock";
 
-import logo from "../../assets/images/radroutes.png";
+// import logo from "../../assets/images/radroutes.png";
 
 const Docs = (props) => {
   return (
@@ -13,7 +13,7 @@ const Docs = (props) => {
             <img
               className="img-fluid"
               width="30%"
-              src={logo}
+              src={process.env.PUBLIC_URL + "/assets/images/radroutes.png"}
               alt="rad routes logo"
             />
           </NavLink>

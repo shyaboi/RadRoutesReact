@@ -9,10 +9,10 @@ import {
   Input,
   NavLink
 } from "reactstrap";
-import logo from "../../assets/images/radroutes.png";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
+const logo = process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 
 
 
@@ -52,7 +52,7 @@ const Login = (props) => {
 
 
   return (
-    <Container id="logoCon" className="txt-cen" fluid>
+    <Container id="logoCon" className="txt-cen shad">
       <Container>
 
         <Row className="mt-4">
@@ -76,6 +76,7 @@ const Login = (props) => {
          </h4>
             </Label>
             <Input
+            className='shad'
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
@@ -90,6 +91,7 @@ const Login = (props) => {
             </h4>
             </Label>
             <Input
+            className='shad'
               onChange={(e) => setPass(e.target.value)}
               type="password"
               name="password"
@@ -97,7 +99,7 @@ const Login = (props) => {
               placeholder="secret , shh don't tell anyone"
             />
           </FormGroup>
-          <Button className='mt-4'
+          <Button className='mt-5 shad'
             onClick={postForm}
             block
             >
