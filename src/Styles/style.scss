@@ -8,6 +8,12 @@ $theme-colors: (
   primaryGrad: #A53B6B,
 );
 
+$prim:#603B89;
+$primGrad:#A53B6B;
+$sec:#408EB0;
+$secGrad:#323880;
+
+
 .card{
   box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
@@ -179,6 +185,14 @@ box-shadow: 0px 12px 25px -4px rgba(0, 0, 0, 0.5);
 .profPic{
   height: 15rem;
   width: 15rem;
+}
+
+// .loginSpiny{
+//   display: none;
+// }
+
+.regiLoginTiny{
+  color: $prim;
 }
 
 

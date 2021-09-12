@@ -12,6 +12,8 @@ import {
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
+import Spiny from '../../Components/Spinner/Spinner'
+
 const logo = process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 
 
@@ -19,28 +21,33 @@ const logo = process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 const Login = (props) => {
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
+  const [buttonState, setButtonState] = useState("Login");
   const history = useHistory();
 
   useEffect(() => {
   }, []);
 
   const postForm = async () => {
-      let bod = JSON.stringify({
-        'email': email,
-        'password': pass,
-      })
-      axios.post('https://radroute.run/login', bod)
+
+    // document.querySelector('.loginSpiny').style.display = "block"
+    setButtonState(<Spiny colour='primary'/>)
+
+    let bod = JSON.stringify({
+      'email': email,
+      'password': pass,
+    })
+    axios.post('https://radroute.run/login', bod)
       .then(function (response) {
         let rData = response.data
         let authed = response.data.authed
         let enc = response.data.enc
-        if(authed=='1'){
+        if (authed == '1') {
           // console.log(authed,enc)
           localStorage.setItem('enc', enc)
 
           history.push("/Home");
 
-        }else{
+        } else {
           alert(rData)
         }
 
@@ -58,11 +65,11 @@ const Login = (props) => {
         <Row className="mt-4">
           <Col id="logo">
             <NavLink href='/'>
-            <img
-             className='img-fluid'
-             width='40%'
-               src={logo} alt="rad routes logo"
-                />
+              <img
+                className='img-fluid'
+                width='40%'
+                src={logo} alt="rad routes logo"
+              />
             </NavLink>
           </Col>
         </Row>
@@ -73,10 +80,10 @@ const Login = (props) => {
             <Label for="exampleEmail" className="mr-sm-2">
               <h4>
                 Email
-         </h4>
+              </h4>
             </Label>
             <Input
-            className='shad'
+              className='shad'
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
@@ -88,10 +95,10 @@ const Login = (props) => {
             <Label for="examplePassword" className="mr-sm-2 sec">
               <h4>
                 Password
-            </h4>
+              </h4>
             </Label>
             <Input
-            className='shad'
+              className='shad'
               onChange={(e) => setPass(e.target.value)}
               type="password"
               name="password"
@@ -99,19 +106,21 @@ const Login = (props) => {
               placeholder="secret , shh don't tell anyone"
             />
           </FormGroup>
-          <Button className='mt-5 shad'
+          <Button
+            id='loginButt'
+            className='mt-5 shad '
             onClick={postForm}
             block
-            >
-              Submit
-            </Button>
+          >
+            {buttonState}
+          </Button>
         </Col>
       </Row>
       <Row className='pb-4'>
         <Col>
-          <NavLink href='/Register'>
+          <NavLink href='/Register' className='regiLoginTiny'>
             Register
-        </NavLink>
+          </NavLink>
         </Col>
       </Row>
     </Container>

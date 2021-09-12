@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   Row,
   Col,
   Button,
-  FormGroup,
-  Label,
-  Input,
   NavLink
 } from "reactstrap";
-import axios from 'axios';
-import { useHistory } from "react-router-dom";
 
 const logo = process.env.PUBLIC_URL + "/assets/images/rad.png";
 
 
 
 const RegiCheckEmail = (props) => {
-  const [pass, setPass] = useState("");
-  const [email, setEmail] = useState("");
-  const history = useHistory();
 
   useEffect(() => {
   }, []);
@@ -63,14 +55,14 @@ const sendVerification = ()=> {
       </Row>
       <Row className="mr-5 ml-5  pt-5 pb-2 txt-cen">
       <Col>
-          <NavLink href="/Login">
+          <NavLink href="/Login" className='regiLoginTiny'>
               Login
               </NavLink>
         </Col>
       </Row>
       <Row className='pb-4 '>
         <Col>
-          <NavLink href='/Register'>
+          <NavLink href='/Register' className='regiLoginTiny'>
             Register
         </NavLink>
         </Col>

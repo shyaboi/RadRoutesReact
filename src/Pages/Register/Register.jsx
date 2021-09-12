@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import {
   Container,
   Row,
@@ -11,10 +11,19 @@ import {
   NavLink,
 } from "reactstrap";
 
+import Spiny from '../../Components/Spinner/Spinner'
+
 const logo = process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 
 const Register = (props) => {
 
+  const [buttonState, setButtonState] = useState("Login");
+
+  const spinUp = () => {
+
+    // document.querySelector('.loginSpiny').style.display = "block"
+    setButtonState(<Spiny />)
+  }
   useEffect(() => {
   }, []);
 
@@ -25,11 +34,11 @@ const Register = (props) => {
         <Row className="mt-5">
           <Col id="logo">
             <NavLink href='/'>
-            <img
-             className='img-fluid'
-             width='30%'
-               src={logo} alt="rad routes logo"
-                />
+              <img
+                className='img-fluid'
+                width='30%'
+                src={logo} alt="rad routes logo"
+              />
             </NavLink>
           </Col>
         </Row>
@@ -46,7 +55,7 @@ const Register = (props) => {
                 <h4>User Name</h4>
               </Label>
               <Input
-              className='shad'
+                className='shad'
                 type="username"
                 name="username"
                 id="user"
@@ -58,7 +67,7 @@ const Register = (props) => {
                 <h4>Email</h4>
               </Label>
               <Input
-              className='shad'
+                className='shad'
                 type="email"
                 name="email"
                 id="Email"
@@ -70,20 +79,22 @@ const Register = (props) => {
                 <h4>Password</h4>
               </Label>
               <Input
-              className='shad'
+                className='shad'
                 type="password"
                 name="password"
                 id="examplePassword"
                 placeholder="Password"
               />
             </FormGroup>
-            <Button className="mt-5 shad" block>Submit</Button>
+            <Button className="mt-5 shad" block onSubmit={spinUp}>
+              {buttonState}
+              </Button>
           </Form>
         </Col>
       </Row>
       <Row className="pb-4">
         <Col>
-          <NavLink href="/Login">Login</NavLink>
+          <NavLink href="/Login" className='regiLoginTiny'>Login</NavLink>
         </Col>
       </Row>
     </Container>
@@ -92,5 +103,5 @@ const Register = (props) => {
 export default Register;
 
 setTimeout(() => {
-  
+
 }, 4000);
