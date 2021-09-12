@@ -30,7 +30,7 @@ const sendVerification = ()=> {
 
 
   return (
-    <Container id="logoCon" className="txt-cen">
+    <Container id="logoCon" className="txt-cen shad">
       <Container>
 
         <Row className="mt-4">
