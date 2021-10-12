@@ -17,7 +17,7 @@ const logo = process.env.PUBLIC_URL + "/assets/images/radroutes.png";
 
 const Register = (props) => {
 
-  const [buttonState, setButtonState] = useState("Login");
+  const [buttonState, setButtonState] = useState("Register");
 
   const spinUp = () => {
 
