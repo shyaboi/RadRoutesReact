@@ -31,6 +31,18 @@ $secGrad:#323880;
           animation: fadein 5s;
 }
 
+#root{
+  background-color: black;
+}
+
+#rootApp{
+  background-color: black;
+}
+
+html{
+  background-color: black;
+}
+
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
